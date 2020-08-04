@@ -52,11 +52,11 @@ class NavBar extends Component {
                             <a href={`${process.env.PUBLIC_URL}/home-two`}>
                               <div className="logoHead">
                                 <img
-                                  src="/assets/img/logo/logonew.png"
+                                  src="/assets/img/logo/logo.png"
                                   alt=""
                                   className="sticky-logo img-fluid"
                                 />
-                                <h3>KnowHow</h3>
+                                <h3>MMC Calgary</h3>
                               </div>
                             </a>
 
@@ -128,7 +128,7 @@ class NavBar extends Component {
       var authLinks = (
         <React.Fragment>
           <li className="has-children has-children--multilevel-submenu">
-            <a>COURSES</a>
+            <a href>COURSES</a>
             <ul className="submenu">
               <li>
                 <a
@@ -222,7 +222,7 @@ class NavBar extends Component {
         </li>
         <li>
           <Link className="nav-link" to="/login/instructor">
-            Teach On Knowhow
+            Teach On MMC Calgary
           </Link>
         </li>
       </React.Fragment>
@@ -248,11 +248,11 @@ class NavBar extends Component {
                           <a href={`${process.env.PUBLIC_URL}/home-two`}>
                             <div className="logoHead">
                               <img
-                                src="/assets/img/logo/logonew.png"
+                                src="/assets/img/logo/logo.png"
                                 alt=""
                                 className="sticky-logo img-fluid"
                               />
-                              <h3>KnowHow</h3>
+                              <h3>MMC Calgary</h3>
                             </div>
                           </a>
 
@@ -309,12 +309,12 @@ class NavBar extends Component {
                                 ABOUT
                               </a>
                             </li>
-                            <li>
+                            {/* <li>
                               {" "}
                               <a herf=" http://localhost:5000/hostname/:id">
                                 image
                               </a>
-                            </li>
+                            </li> */}
 
                             {isAuthenticated ? authLinks : guestLinks}
                           </ul>

@@ -48,7 +48,7 @@ class ServiceGridSlider extends Component {
       },
       {
         img: "service3.jpg",
-        serviceTitle: "JavaScript: Understanding the Weird Parts",
+        serviceTitle: "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
         serviceExcerpt:
           "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
         serviceUrl: "service-details-left-sidebar"
