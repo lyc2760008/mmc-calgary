@@ -24,30 +24,30 @@ class HeroSliderOne extends Component {
         </div>
       ),
       autoplay: {
-        delay: 5000
+        delay: 8000
       }
     };
 
     let data = [
       {
-        bgImg: "crowsel3.png",
+        bgImg: "backgrond1.png",
         sliderTitle: "Build Your Dream With Passion",
         sliderSubtitle:
-          "Learn, Code and start developing your own beautiful websites at no cost.",
+          "Learn, Practice and start enjoying your new journey at MMC Calgary Education",
         btnLink: "contact-us"
       },
       {
-        bgImg: "crowsel2.png",
+        bgImg: "backgrond2.png",
         sliderTitle: "Build Your Dream With Passion",
         sliderSubtitle:
-          "Learn, Code and start developing your own beautiful websites at no cost.",
+          "Learn, Practice and start enjoying your new journey at MMC Calgary Education",
         btnLink: "contact-us"
       },
       {
-        bgImg: "crowsel0.png",
+        bgImg: "backgrond3.png",
         sliderTitle: "Build Your Dream With Passion",
         sliderSubtitle:
-          "Learn, Code and start developing your own beautiful websites at no cost.",
+          "Learn, Practice and start enjoying your new journey at MMC Calgary Education",
         btnLink: "contact-us"
       }
     ];
@@ -57,7 +57,7 @@ class HeroSliderOne extends Component {
         <div className="swiper-slide" key={i}>
           <div
             className="hero-slider__single-item"
-            style={{ backgroundImage: `url(assets/img/slider/${val.bgImg})` }}
+            style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(assets/img/slider/${val.bgImg})` }}
           >
             <div className="hero-slider__content-wrapper">
               <div className="container">
@@ -71,7 +71,7 @@ class HeroSliderOne extends Component {
                         href={`${process.env.PUBLIC_URL}/${val.btnLink}`}
                       >
                         {" "}
-                        GET START
+                        CONTACT US
                       </a>
                     </div>
                   </div>
@@ -86,7 +86,7 @@ class HeroSliderOne extends Component {
     return (
       <div>
         {/*====================  hero slider area ====================*/}
-        <div className="hero-alider-area">
+        <div className="hero-slider-area">
           <Swiper {...params}>{DataList}</Swiper>
         </div>
         {/*====================  End of hero slider area  ====================*/}

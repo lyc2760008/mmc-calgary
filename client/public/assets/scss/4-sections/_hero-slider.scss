@@ -2,7 +2,7 @@
 =            hero slider            =
 =============================================*/
 
-.hero-alider-area {
+.hero-slider-area {
 
   .ht-swiper-button {
     &-nav {
@@ -101,6 +101,7 @@
     color: $white;
     margin-bottom: 40px;
     margin-top: -15px;
+    z-index: 2;
 
     @media #{$laptop-device} {
       font-size: 60px;
@@ -134,6 +135,7 @@
     line-height: 1.8;
     color: $white;
     margin-bottom: 50px;
+    z-index: 2;
 
     @media #{$large-mobile} {
       margin-bottom: 30px;
@@ -145,14 +147,16 @@
   }
 
   &__btn {
-    font-size: 13px;
+    font-size: 15px;
     line-height: 1;
-    padding: 20px 60px;
+    padding: 20px 50px;
     color: $white;
     border: 1px solid $white;
     align-self: flex-start;
     border-radius: 50px;
     transition: $transition--cubic;
+    word-spacing: 6px;
+    z-index: 2;
 
     &--style2 {
       align-self: center;
@@ -167,5 +171,7 @@
     }
   }
 }
+
+
 
 /*=====  End of hero slider  ======*/
