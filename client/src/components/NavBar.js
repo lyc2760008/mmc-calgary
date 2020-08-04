@@ -248,6 +248,7 @@ class NavBar extends Component {
                           <a href={`${process.env.PUBLIC_URL}/home-two`}>
                             <div className="logoHead">
                               <img
+                                style={{ width: "80px" }}
                                 src="/assets/img/logo/logo.png"
                                 alt=""
                                 className="sticky-logo img-fluid"
