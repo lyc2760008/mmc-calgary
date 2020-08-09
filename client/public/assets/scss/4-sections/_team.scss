@@ -42,6 +42,10 @@
         margin-bottom: -40px;
     }
 
+    &__proPhoto{
+        margin-bottom: 10px;
+    }
+
     &__single{
         margin-bottom: 40px;
         border-left: 2px solid $body-text-color;
@@ -204,7 +208,7 @@
         }
     }
     &:hover {
-        box-shadow: 0 5px 15px rgba($black, 0.15);
+        box-shadow: 0 8px 20px rgba($black, 0.15);
         border-color: transparent;
     }
 }

@@ -13,7 +13,7 @@ class Services extends Component {
 
     const response = await axios
       .get(
-        "http://localhost:5000/enrollmentbystudent?id=" +
+        "/enrollmentbystudent?id=" +
           this.props.match.params.id
       )
       .then(result => {
@@ -37,19 +37,20 @@ class Services extends Component {
           <div className="service-grid-item">
             <div className="service-grid-item__image">
               <div className="service-grid-item__image-wrapper">
-                <a
+                {/* <a
                   href={
                     `${process.env.PUBLIC_URL}/` +
                     `blog-details-left-sidebar/` +
                     `${val.course._id}`
                   }
-                >
+                > */}
+                {console.log(data[0].course.courseImg)}
                   <img
-                    src={val.course.courseImage}
+                    src={`assets/img/backgrounds/${val.course.courseImg}.jpg`}
                     className="img-fluid"
                     alt="Service Grid"
                   />
-                </a>
+                {/* </a> */}
               </div>
               {/* <div className="icon">
                         <i className={val.iconClass} />
@@ -57,15 +58,15 @@ class Services extends Component {
 
               <div className="service-grid-item__content">
                 <h3 className="title">
-                  <a
+                  {/* <a
                     href={
                       `${process.env.PUBLIC_URL}/` +
                       `blog-details-left-sidebar/` +
                       `${val.course._id}`
                     }
-                  >
+                  > */}
                     {val.course.courseName}
-                  </a>
+                  {/* </a> */}
                 </h3>
               </div>
             </div>
@@ -114,7 +115,7 @@ class Services extends Component {
         {/*====================  End of service page content  ====================*/}
 
         {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
+        {/* <BrandLogoSlider background="grey-bg" /> */}
 
         {/* Footer */}
         <Footer />

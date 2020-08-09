@@ -4,13 +4,22 @@ class ServiceTabExample extends Component {
   render() {
     /* service tab menu */
     let serviceTabMenuData = [
-      { iconName: "flaticon-002-welding", tabMenuName: "Web Development" },
-      {
-        iconName: "flaticon-004-walkie-talkie",
-        tabMenuName: "Mobile Apps"
+      { iconName: "fas fa-crown", 
+        tabMenuName: "【NEWS TALK】" 
       },
-      { iconName: "flaticon-015-cart", tabMenuName: "Programming Languages" },
-      { iconName: "flaticon-010-tank-1", tabMenuName: "Database" }
+      {
+        iconName: "fab fa-canadian-maple-leaf",
+        tabMenuName: "English"
+      },
+      { iconName: "fas fa-spell-check", 
+        tabMenuName: "English Master Writing" 
+      },
+      { iconName: "	fas fa-square-root-alt", 
+        tabMenuName: "Singapore Mathematics" 
+      },
+      { iconName: "fas fa-language", 
+        tabMenuName: "Happy Chinese" 
+      }
     ];
 
     let serviceTabMenuDatalist = serviceTabMenuData.map((val, i) => {
@@ -30,28 +39,35 @@ class ServiceTabExample extends Component {
     let serviceTabContentData = [
       {
         bgUrl: "service-tab1.jpg",
-        contentTitle: "Modern React with Redux",
+        contentTitle: "News Talk...",
         contentDesc:
           "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         serviceLink: "service-details-left-sidebar"
       },
       {
         bgUrl: "service-tab1.jpg",
-        contentTitle: "The Complete React Native Course",
+        contentTitle: "English",
         contentDesc:
           "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         serviceLink: "service-details-left-sidebar"
       },
       {
         bgUrl: "service-tab1.jpg",
-        contentTitle: "JavaScript: Understanding the Weird Parts",
+        contentTitle: "English Master Writing",
         contentDesc:
           "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         serviceLink: "service-details-left-sidebar"
       },
       {
-        bgUrl: "service-tab1.jpg",
-        contentTitle: "MongoDB - The Complete Developer Guide",
+        bgUrl: "service-tab4.jpg",
+        contentTitle: "Singapore Mathematics",
+        contentDesc:
+          "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        serviceLink: "service-details-left-sidebar"
+      },
+      {
+        bgUrl: "service-tab5.png",
+        contentTitle: "Learn Mandarin...",
         contentDesc:
           "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         serviceLink: "service-details-left-sidebar"
@@ -91,7 +107,7 @@ class ServiceTabExample extends Component {
               <div className="col-lg-12">
                 <div className="section-title-area text-center">
                   <h2 className="section-title section-space--bottom--50">
-                    Most Viewed Courses <span className="title-icon" />
+                    Courses Overview <span className="title-icon" />
                   </h2>
                 </div>
               </div>

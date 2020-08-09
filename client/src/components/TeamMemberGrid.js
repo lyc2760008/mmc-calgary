@@ -6,9 +6,9 @@ class TeamMemberGrid extends Component {
 
     let data = [
       {
-        profileImage: "team-1.jpg",
-        profileTitle: "Ashwini Soni",
-        profileDesignation: "Team Member 1",
+        profileImage: "team-1-small.jpg",
+        profileTitle: "Flora Fan",
+        profileDesignation: "CEO & Founder",
         profileEmail: "info@example.com",
         socialLinks: {
           facebook: "//www.facebook.com",
@@ -18,9 +18,9 @@ class TeamMemberGrid extends Component {
         }
       },
       {
-        profileImage: "team-2.jpg",
-        profileTitle: "Rutva Patel",
-        profileDesignation: "Team Member 2",
+        profileImage: "team-2-small.jpg",
+        profileTitle: "Yichen Li",
+        profileDesignation: "Co-Founder & IT Manager",
         profileEmail: "info@example.com",
         socialLinks: {
           facebook: "//www.facebook.com",
@@ -30,8 +30,8 @@ class TeamMemberGrid extends Component {
         }
       },
       {
-        profileImage: "team-3.jpg",
-        profileTitle: "Amandeep Singh",
+        profileImage: "team-3-small.jpg",
+        profileTitle: "Joe Doe",
         profileDesignation: "Team Member 3",
         profileEmail: "info@example.com",
         socialLinks: {
@@ -42,8 +42,8 @@ class TeamMemberGrid extends Component {
         }
       },
       {
-        profileImage: "team-4.jpg",
-        profileTitle: "Apurva Savaj",
+        profileImage: "team-4-small.jpg",
+        profileTitle: "Joe Doe",
         profileDesignation: "Team Member 4",
         profileEmail: "info@example.com",
         socialLinks: {
@@ -64,6 +64,11 @@ class TeamMemberGrid extends Component {
           <div className="team">
             
             <div className="content">
+              <img
+                src={`assets/img/team/${val.profileImage}`}
+                className="team-job__proPhoto"
+                alt=""
+              />
               <h3 className="title">{val.profileTitle}</h3>
               <span>{val.profileDesignation}</span>
               <a href={"mailto:" + val.profileEmail} className="email">

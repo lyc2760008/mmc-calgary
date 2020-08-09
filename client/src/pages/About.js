@@ -48,9 +48,14 @@ class About extends Component {
         </div>
         {/*====================  End of breadcrumb area  ====================*/}
 
-        <div className="page-wrapper" style={{marginTop:"20px"}}>
+        <div className="page-wrapper" style={{marginTop:"20px", textAlign:'center'}}>
           {/*About section start*/}
-          
+          <h2 className="section-title section-space--bottom--50">We are MMC Calgary</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</p>
           {/*About section end*/}
 
           {/* Feature Icon */}

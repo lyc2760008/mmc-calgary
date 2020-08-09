@@ -23,7 +23,7 @@ class VideoCta extends Component {
                 <div className="video-cta-content">
                   <h4 className="video-cta-content__small-title">ABOUT US</h4>
                   <h3 className="video-cta-content__title">
-                    Best E-learning Portal
+                    Best Education Center for K-12
                   </h3>
                   <p className="video-cta-content__text">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit sed
@@ -43,8 +43,8 @@ class VideoCta extends Component {
                   <img
                     src="assets/img/slider/sphere.png"
                     height="360px"
-                    width="360px"
-                    alt="techsphere"
+                    width="460px"
+                    alt="family hands"
                   />
                 </div>
               </div>

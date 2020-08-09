@@ -49,7 +49,7 @@ class NavBar extends Component {
                           style={{ width: "100%" }}
                         >
                           <nav className="main-nav">
-                            <a href={`${process.env.PUBLIC_URL}/home-two`}>
+                            <a href={`${process.env.PUBLIC_URL}/`}>
                               <div className="logoHead">
                                 <img
                                   src="/assets/img/logo/logo.png"
@@ -93,7 +93,7 @@ class NavBar extends Component {
                                 </a>
                               </li>
                               <li className="inactive">
-                                <a
+                                <a href
                                   onClick={this.onLogoutClick.bind(this)}
                                   className="nav-link"
                                 >
@@ -128,12 +128,12 @@ class NavBar extends Component {
       var authLinks = (
         <React.Fragment>
           <li className="has-children has-children--multilevel-submenu">
-            <a href>COURSES</a>
+            <a>COURSES</a>
             <ul className="submenu">
               <li>
                 <a
                   href={
-                    `${process.env.PUBLIC_URL}/servicesforstudent/` + users.id
+                    `${process.env.PUBLIC_URL}/servicesforstudent-` + users.id
                   }
                 >
                   MY COURSES
@@ -146,7 +146,6 @@ class NavBar extends Component {
           </li>
           <li className="inactive">
             <a
-              href=""
               onClick={this.onLogoutClick.bind(this)}
               className="nav-link"
             >
@@ -162,7 +161,7 @@ class NavBar extends Component {
       );
     }
     if (users.role === "instructor") {
-      var authLinks = (
+      authLinks = (
         <React.Fragment>
           <li className="has-children has-children--multilevel-submenu">
             <a>COURSES</a>
@@ -195,9 +194,9 @@ class NavBar extends Component {
                 SERVICE
               </a>{" "}
               </li> */}
-          <li>
+          <li className="inactive">
             <a
-              href=""
+              href
               onClick={this.onLogoutClick.bind(this)}
               className="nav-link"
             >
@@ -245,7 +244,7 @@ class NavBar extends Component {
                         style={{ width: "100%" }}
                       >
                         <nav className="main-nav">
-                          <a href={`${process.env.PUBLIC_URL}/home-two`}>
+                          <a href={`${process.env.PUBLIC_URL}/`}>
                             <div className="logoHead">
                               <img
                                 style={{ width: "80px" }}
@@ -259,7 +258,7 @@ class NavBar extends Component {
 
                           <ul id="main-nav-ul">
                             <li>
-                              <a href={`${process.env.PUBLIC_URL}/home-two`}>
+                              <a href={`${process.env.PUBLIC_URL}/`}>
                                 HOME
                               </a>
                             </li>
@@ -292,7 +291,7 @@ class NavBar extends Component {
                             }}
                           >
                             <li className="has-children has-children--multilevel-submenu">
-                              <a href={`${process.env.PUBLIC_URL}/home-two`}>
+                              <a href={`${process.env.PUBLIC_URL}/`}>
                                 HOME
                               </a>
                               <ul className="submenu">

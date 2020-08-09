@@ -8,11 +8,11 @@ import axios from "axios";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 
-class BlogDetailsLeftSidebar2 extends Component {
+class BlogDetailsLeftSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: [],
+      data: [],
       user: JSON.parse(localStorage.getItem("userid")),
       userRole: JSON.parse(localStorage.getItem("userRole")),
       selectedVideo: null,
@@ -66,7 +66,7 @@ class BlogDetailsLeftSidebar2 extends Component {
     }
 
     const response = await axios
-      .get("/lectures?id=" + this.props.match.params.id)
+      .get("/course/" + this.props.match.params.id)
       .then(result => {
         console.log(
           "/checkenrollment?id=" +
@@ -82,7 +82,7 @@ class BlogDetailsLeftSidebar2 extends Component {
               this.props.match.params.id
           )
           .then(result => {
-            if (result.data != undefined) {
+            if (result.data) {
               this.setState({
                 enrolled: "ALREADY ENROLLED",
                 buttonclass: "btn btn-danger"
@@ -92,27 +92,21 @@ class BlogDetailsLeftSidebar2 extends Component {
             }
             //return result;
           });
-        console.log(result.data[0]);
+        console.log(result);
         return result;
       });
 
     this.setState({
-      videos: response.data,
-      selectedVideo: response.data[0],
-      status: "loading"
+      data: response.data,
     });
   }
 
-  onVideoSelect = video => {
-    this.setState({ selectedVideo: video });
-  };
-
   render() {
+    
     return (
       <div>
         {/* Navigation bar */}
         <NavBar />
-
         {/* breadcrumb */}
         {/*====================  breadcrumb area ====================*/}
         <div className="breadcrumb-area breadcrumb-bg">
@@ -122,13 +116,13 @@ class BlogDetailsLeftSidebar2 extends Component {
                 <div className="page-banner text-center">
                   <h1>Course Details</h1>
                   <ul className="page-breadcrumb">
-                    {/* <li>
+                    <li>
                       <a href="/">Home</a>
                     </li>
                     <li>
-                      <a href="projects">Courses</a>
+                      <a href="/services">All Courses</a>
                     </li>
-                    <li>Course Details</li> */}
+                    <li>Course Details</li>
                   </ul>
                 </div>
               </div>
@@ -148,15 +142,19 @@ class BlogDetailsLeftSidebar2 extends Component {
                   <div className="ui container">
                     <div className="ui grid">
                       <div className="ui row">
-                        <div className="eleven wide column">
-                          <VideoDetail video={this.state.selectedVideo} />
-                        </div>
+                      {this.state.data[0]&&
+                      <div>
+                        <h3>{this.state.data[0].courseName}</h3>  
+                        <h5>{this.state.data[0].courseDescription}</h5>
+                        <h5>This Course is scheduled from:{this.state.data[0].courseSchedule}</h5>
+                      </div>  
+                      }
 
                         <div className="five wide column">
-                          <VideoList
+                          {/* <VideoList
                             onVideoSelect={this.onVideoSelect}
                             videos={this.state.videos}
-                          />
+                          /> */}
                         </div>
                       </div>
                     </div>
@@ -164,7 +162,7 @@ class BlogDetailsLeftSidebar2 extends Component {
                 </div>
                 <div className="col-lg-8 col-12 section-space--bottom--30 pl-30 pl-sm-15 pl-xs-15">
                   <div className="project-details">
-                    <h2>
+                    {/* <h2>
                       {" "}
                       {this.state.selectedVideo
                         ? this.state.selectedVideo.title
@@ -174,7 +172,7 @@ class BlogDetailsLeftSidebar2 extends Component {
                       {this.state.selectedVideo
                         ? this.state.selectedVideo.course.courseDescription
                         : this.state.status}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
 
@@ -203,8 +201,6 @@ class BlogDetailsLeftSidebar2 extends Component {
 
         {/*====================  End of project details page content  ====================*/}
 
-        {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
 
         {/* Footer */}
         <Footer />
@@ -216,4 +212,4 @@ class BlogDetailsLeftSidebar2 extends Component {
   }
 }
 
-export default BlogDetailsLeftSidebar2;
+export default BlogDetailsLeftSidebar;

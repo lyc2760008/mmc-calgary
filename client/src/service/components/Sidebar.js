@@ -7,19 +7,19 @@ class Sidebar extends Component {
     let popularPostData = [
       {
         postImage: "sidebar-blog-1.jpg",
-        postTitle: "Making Sense of React Hooks?",
+        postTitle: "Why do your children need to learn Math?",
         postLink: "blog-details-left-sidebar",
-        postDate: "30 October 2019"
+        postDate: "01 September 2020"
       },
       {
         postImage: "sidebar-blog-2.jpg",
-        postTitle: "Set Up Medium Feed in React",
+        postTitle: "Why do your children need to learn Math?",
         postLink: "blog-details-left-sidebar",
         postDate: "30 October 2019"
       },
       {
         postImage: "sidebar-blog-3.jpg",
-        postTitle: "Five Things I Didn’t Know About Create-React-App",
+        postTitle: "Why do your children need to learn Math?",
         postLink: "blog-details-left-sidebar",
         postDate: "30 October 2019"
       }
@@ -33,7 +33,8 @@ class Sidebar extends Component {
           </a>
           <div className="content">
             <h5>
-              <a href={`${process.env.PUBLIC_URL}/${val.postLink}`}>
+            {/* <a href={`${process.env.PUBLIC_URL}/${val.postLink}`}> */}
+              <a href= 'https://www.huffpost.com/entry/reasons-kids-need-to-learn-math_b_3510398'>
                 {val.postTitle}
               </a>
             </h5>
@@ -46,19 +47,20 @@ class Sidebar extends Component {
     /* sidebar tag */
 
     let tagData = [
-      { tagLink: "blog-left-sidebar", tagName: "Web Development" },
-      { tagLink: "blog-left-sidebar", tagName: "Mobile Apps" },
-      { tagLink: "blog-left-sidebar", tagName: "Programming Languages" },
-      { tagLink: "blog-left-sidebar", tagName: "Game Development" },
-      { tagLink: "blog-left-sidebar", tagName: "Databases" },
-      { tagLink: "blog-left-sidebar", tagName: "Software Testing" },
-      { tagLink: "blog-left-sidebar", tagName: "Software Engineering" }
+      { tagLink: "blog-left-sidebar", tagName: "Time Management" },
+      { tagLink: "blog-left-sidebar", tagName: "Quick learning" },
+      { tagLink: "blog-left-sidebar", tagName: "Interesting" },
+      { tagLink: "blog-left-sidebar", tagName: "Interesting" },
+      { tagLink: "blog-left-sidebar", tagName: "Interesting" },
+      { tagLink: "blog-left-sidebar", tagName: "Interesting" },
+      { tagLink: "blog-left-sidebar", tagName: "Interesting" }
     ];
 
     let tagDataList = tagData.map((val, i) => {
       return (
         <li key={i}>
-          <a href={`${process.env.PUBLIC_URL}/${val.tagLink}`}>{val.tagName}</a>
+          {/* <a href={`${process.env.PUBLIC_URL}/${val.tagLink}`}>{val.tagName}</a> */}
+          <a>{val.tagName}</a>
         </li>
       );
     });

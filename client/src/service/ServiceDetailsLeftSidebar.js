@@ -3,6 +3,7 @@ import NavBar from '../components/NavBar';
 import Sidebar from './components/Sidebar';
 import ServiceGallery from './components/ServiceGallery';
 import BrandLogoSlider from '../components/BrandLogoSlider';
+import RegisterButton from './components/RegisterButton'
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
 class ServiceDetailsLeftSidebar extends Component{
@@ -19,10 +20,9 @@ class ServiceDetailsLeftSidebar extends Component{
                         <div className="row">
                             <div className="col">
                                 <div className="page-banner text-center">
-                                    <h1>Service Details</h1>
+                                    <h1>Course Details</h1>
                                     <ul className="page-breadcrumb">
                                         <li><a href="/">Home</a></li>
-                                        <li><a href={`${process.env.PUBLIC_URL}/services`}>Services</a></li>
                                         <li>Service Details</li>
                                     </ul>
                                 </div>
@@ -66,6 +66,7 @@ class ServiceDetailsLeftSidebar extends Component{
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
                                     </div>
                                 </div>
+                                <RegisterButton />
                                 </div>
                             </div>
                             </div>
@@ -79,7 +80,7 @@ class ServiceDetailsLeftSidebar extends Component{
                     </div>
 
                 {/* Brand logo */}
-                <BrandLogoSlider background = "grey-bg" />
+                {/* <BrandLogoSlider background = "grey-bg" /> */}
 
                 {/* Footer */}
                 <Footer/>

@@ -12,9 +12,9 @@ class Services extends Component {
     //this.onTextSubmit("react tutorials");
 
     const response = await axios
-      .get("http://localhost:5000/courses")
+      .get("/courses")
       .then(result => {
-        console.log(result.data[0]);
+        console.log(result.data);
         return result;
       });
 
@@ -37,30 +37,30 @@ class Services extends Component {
                 <a
                   href={
                     `${process.env.PUBLIC_URL}/` +
-                    `blog-details-left-sidebar/` +
+                    `course-details-` +
                     `${val._id}`
                   }
                 >
                   <img
-                    src={val.courseImage}
+                    src={`assets/img/backgrounds/${val.courseImg}.jpg`}
                     className="img-fluid"
                     alt="Service Grid"
                   />
                 </a>
               </div>
-
               <div className="service-grid-item__content">
                 <h3 className="title">
-                  <a
-                    href={
-                      `${process.env.PUBLIC_URL}/` +
-                      `blog-details-left-sidebar/` +
-                      `${val._id}`
-                    }
+                <a
+                  href={
+                    `${process.env.PUBLIC_URL}/` +
+                    `course-details-` +
+                    `${val._id}`
+                  }
                   >
                     {val.courseName}
                   </a>
                 </h3>
+                <p>{val.courseDescription}</p>
               </div>
             </div>
           </div>
@@ -108,7 +108,7 @@ class Services extends Component {
         {/*====================  End of service page content  ====================*/}
 
         {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
+        {/* <BrandLogoSlider background="grey-bg" /> */}
 
         {/* Footer */}
         <Footer />

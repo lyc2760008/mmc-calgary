@@ -22,11 +22,11 @@ class HomeTwo extends Component {
         {/* Video CTA */}
         <VideoCta />
 
-        {/* Project Slider */}
-        <ProjectSliderTwo />
-
         {/* Service Tab */}
         <ServiceTab />
+
+        {/* Project Slider */}
+        <ProjectSliderTwo />
 
         {/* Testimonial Slider */}
         <TestimonialSlider />
@@ -34,7 +34,7 @@ class HomeTwo extends Component {
         {/* Team job */}
 
         {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
+        {/* <BrandLogoSlider background="grey-bg" /> */}
 
         {/* Blog grid */}
 

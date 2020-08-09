@@ -39,6 +39,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import PrivateRoute from "./components/common/PrivateRoute";
+import LoginFirst from "./components/common/LoginFirst";
 //actions
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -52,6 +53,7 @@ import AddEducation from "./components/add-credentials/AddEducation";
 import Profile from "./components/profile/Profile";
 import FinalDashboard from "./components/FinalDashboard";
 import FinalProfiles from "./components/FinalProfiles";
+import CourseDetails from "./blog/CourseDetails";
 
 //check for token  to avoid state destroy on reload
 if (localStorage.jwtToken) {
@@ -97,9 +99,14 @@ class Root extends Component {
               path={`${process.env.PUBLIC_URL}/about-us`}
               component={About}
             />
+            <Route
+              exact
+              path={`${process.env.PUBLIC_URL}/loginFirst`}
+              component={LoginFirst}
+            />
             <PrivateRoute
               exact
-              path={`${process.env.PUBLIC_URL}/servicesforstudent/:id`}
+              path={`${process.env.PUBLIC_URL}/servicesforstudent-:id`}
               component={Servicesforstudent}
             />
              <PrivateRoute
@@ -142,6 +149,11 @@ class Root extends Component {
               exact
               path={`${process.env.PUBLIC_URL}/blog-details-left-sidebar/:id`}
               component={BlogDetailsLeftSidebar}
+            />
+            <PrivateRoute
+              exact
+              path={`${process.env.PUBLIC_URL}/course-details-:id`}
+              component={CourseDetails}
             />
             <Route
               exact
