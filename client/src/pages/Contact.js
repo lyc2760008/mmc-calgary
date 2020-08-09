@@ -36,7 +36,9 @@ class Contact extends Component{
                     <div className="row section-space--bottom--50">
                         <div className="col">
                             <div className="contact-map">
-                            <iframe title="google-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d392436.93004030554!2d-105.13838587646829!3d39.7265847007123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1558429398879!5m2!1sen!2sbd" allowFullScreen></iframe>
+                            {/* <iframe title="google-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d392436.93004030554!2d-105.13838587646829!3d39.7265847007123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1558429398879!5m2!1sen!2sbd" allowFullScreen></iframe> */}
+                            <iframe title="MMC Calgary" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.0088375102887!2d-114.16321378409958!3d51.01598557955737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537171f942281cc7%3A0xc8b256c246581add!2s80%20Glamis%20Dr%20SW%2C%20Calgary%2C%20AB%20T3E%206T8!5e0!3m2!1sen!2sca!4v1597015304633!5m2!1sen!2sca" allowFullScreen></iframe>
+                            {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.0088375102887!2d-114.16321378409958!3d51.01598557955737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x537171f942281cc7%3A0xc8b256c246581add!2s80%20Glamis%20Dr%20SW%2C%20Calgary%2C%20AB%20T3E%206T8!5e0!3m2!1sen!2sca!4v1597015304633!5m2!1sen!2sca" width="800" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe> */}
                             </div>
                         </div>
                     </div>
@@ -47,15 +49,15 @@ class Contact extends Component{
                             <ul>
                                 <li>
                                     <span className="icon"><i className="ion-android-map" /></span>
-                                    <span className="text"><span>Stock Building, 125 Main Street 1st Lane, San Francisco, USA</span></span>
+                                    <span className="text"><span>80 Glamis Dr SW, Calgary, AB, T3E 6T7</span></span>
                                 </li>
                                 <li>
                                     <span className="icon"><i className="ion-ios-telephone-outline" /></span>
-                                    <span className="text"><a href="tel:1234567890">(001) 24568 365 987</a><a href="tel:1234567890">(001) 65897 569 784</a></span>
+                                    <span className="text"><a href="tel:4036015227">(403) 601 5227</a><a href="tel:4032560086">(403) 560 2286</a></span>
                                 </li>
                                 <li>
                                     <span className="icon"><i className="ion-ios-email-outline" /></span>
-                                    <span className="text"><a href="mailto:info@example.com">info@example.com</a><a href="mailto:info@example.com">info@example.com</a></span>
+                                    <span className="text"><a href="mailto:mmceducationcalgary@gmail.com">mmceducationcalgary@gmail.com</a><a href="mailto:mmceducationcalgary@gmail.com">mmceducationcalgary@gmail.com</a></span>
                                 </li>
                             </ul>
                         </div>

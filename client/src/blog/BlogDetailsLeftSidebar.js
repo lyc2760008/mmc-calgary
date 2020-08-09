@@ -82,7 +82,7 @@ class BlogDetailsLeftSidebar2 extends Component {
               this.props.match.params.id
           )
           .then(result => {
-            if (result.data != undefined) {
+            if (result.data) {
               this.setState({
                 enrolled: "ALREADY ENROLLED",
                 buttonclass: "btn btn-danger"

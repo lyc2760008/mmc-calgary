@@ -22,7 +22,7 @@ class Footer extends Component {
                                 alt=""
                                 className="sticky-logo img-fluid"
                               />
-                              <h3>KnowHow</h3>
+                              <h3>MMC Calgary</h3>
                             </div>
                           </a>
                         </div>
@@ -95,17 +95,15 @@ class Footer extends Component {
                         <h4 className="footer-widget__title">CONTACT US</h4>
                         <div className="footer-widget__content">
                           <p className="address">
-                            Your address goes here, street Crossroad123.
+                            80 Glamis Dr SW, Calgary, AB, T3E 6T7
                           </p>
                           <ul className="contact-details">
                             <li>
-                              <span>P:</span>99 55 66 88 526
+                              <span>P:</span>(403)-601-5227
                             </li>
+                            
                             <li>
-                              <span>F:</span>55 44 77 62
-                            </li>
-                            <li>
-                              <span>E:</span>cons@email.com
+                              <span>E:</span>mmceducationcalgary@gmail.com
                             </li>
                           </ul>
                         </div>
@@ -118,7 +116,7 @@ class Footer extends Component {
           </div>
           <div className="footer-copyright-wrapper">
             <div className="footer-copyright text-center">
-              Copyright © 2019. All right reserved
+              © MMC Calgary 2020. All right reserved
             </div>
           </div>
         </div>

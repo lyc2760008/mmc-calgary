@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar";
-import BrandLogoSlider from "../components/BrandLogoSlider";
+// import BrandLogoSlider from "../components/BrandLogoSlider";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 class Services extends Component {
@@ -44,7 +44,7 @@ class Services extends Component {
                     `${val.course._id}`
                   }
                 > */}
-                {console.log(data[0].course.courseImg)}
+                {/* {console.log(data[0].course.courseImg)} */}
                   <img
                     src={`assets/img/backgrounds/${val.course.courseImg}.jpg`}
                     className="img-fluid"
@@ -56,7 +56,7 @@ class Services extends Component {
                         <i className={val.iconClass} />
                         </div> */}
 
-              <div className="service-grid-item__content">
+              <div className="service-grid-item__content" style={{color:"grey"}}>
                 <h3 className="title">
                   {/* <a
                     href={
@@ -68,6 +68,11 @@ class Services extends Component {
                     {val.course.courseName}
                   {/* </a> */}
                 </h3>
+                <div>
+                  <h5 style={{color:"grey"}}>{val.course.courseSchedule}</h5>
+                  <h5 style={{color:"grey"}}>Instructor: {val.course.instructorName}</h5>
+                </div>
+                {/* {console.log(val.course)} */}
               </div>
             </div>
           </div>

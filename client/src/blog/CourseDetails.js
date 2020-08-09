@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import NavBar from "../components/NavBar";
-import BrandLogoSlider from "../components/BrandLogoSlider";
+//import BrandLogoSlider from "../components/BrandLogoSlider";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import axios from "axios";
-import VideoList from "./VideoList";
-import VideoDetail from "./VideoDetail";
+//import VideoList from "./VideoList";
+//import VideoDetail from "./VideoDetail";
 
 class BlogDetailsLeftSidebar extends Component {
   constructor(props) {
@@ -16,8 +16,8 @@ class BlogDetailsLeftSidebar extends Component {
       user: JSON.parse(localStorage.getItem("userid")),
       userRole: JSON.parse(localStorage.getItem("userRole")),
       selectedVideo: null,
-      enrolled: "ADD TO COURSE LIST",
-      buttonclass: "btn btn-success",
+      enrolled: "",
+      buttonclass: "",
       addcourse: false
     };
 
@@ -53,6 +53,10 @@ class BlogDetailsLeftSidebar extends Component {
           // then print response status
           toast.error("Course not added");
         });
+        this.setState({
+          enrolled: "ALREADY ENROLLED",
+          buttonclass: "btn btn-danger"
+        });
     } else {
       console.log(this.state.buttonclass);
       toast.error("Course already added");
@@ -74,7 +78,7 @@ class BlogDetailsLeftSidebar extends Component {
             "&&courseid=" +
             this.props.match.params.id
         );
-        const responseEnrolled = axios
+        axios
           .get(
             "/checkenrollment?id=" +
               this.state.user +
@@ -88,6 +92,10 @@ class BlogDetailsLeftSidebar extends Component {
                 buttonclass: "btn btn-danger"
               });
             } else {
+              this.setState({
+                enrolled: "ADD TO COURSE LIST",
+                buttonclass: "btn btn-success"
+              });
               console.log(result.data);
             }
             //return result;

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import NavBar from "../components/NavBar";
-import FeatureIcon from "../components/FeatureIcon";
-import Funfact from "../components/Funfact";
+//import FeatureIcon from "../components/FeatureIcon";
+//import Funfact from "../components/Funfact";
 import TeamMemberGrid from "../components/TeamMemberGrid";
-import TestimonialSlider from "../components/TestimonialSlider";
-import BrandLogoSlider from "../components/BrandLogoSlider";
+//import TestimonialSlider from "../components/TestimonialSlider";
+//import BrandLogoSlider from "../components/BrandLogoSlider";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
-import ModalVideo from "react-modal-video";
+//import ModalVideo from "react-modal-video";
 class About extends Component {
   constructor() {
     super();

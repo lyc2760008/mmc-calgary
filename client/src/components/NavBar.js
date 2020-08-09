@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -215,8 +216,13 @@ class NavBar extends Component {
     const guestLinks = (
       <React.Fragment>
         <li>
-          <Link className="nav-link" to="/login/student">
+          <Link className="nav-link" to="/login-student">
             LOGIN
+          </Link>
+        </li>
+        <li>
+          <Link className="nav-link" to="/register-student">
+            SIGN UP
           </Link>
         </li>
         <li>

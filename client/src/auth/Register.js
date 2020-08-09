@@ -77,7 +77,7 @@ class Register extends Component {
                       width="60px"
                       className="sticky-logo img-fluid"
                     />
-                    <h3>KnowHow</h3>
+                    <h3>MMC Calgary</h3>
                   </div>
                   <h4 className="mb-3 f-w-400">Sign up into your account</h4>
                   <form noValidate onSubmit={this.onSubmit}>
@@ -211,7 +211,7 @@ class Register extends Component {
                   <p className="mb-2">
                     Already have an account?{" "}
                     <a
-                      href={`${process.env.PUBLIC_URL}/login/`+this.props.match.params.role}
+                      href={`${process.env.PUBLIC_URL}/login-`+this.props.match.params.role}
                       className="f-w-400"
                     >
                       Log in

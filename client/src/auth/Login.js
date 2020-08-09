@@ -3,7 +3,7 @@ import "./style.css";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import GoogleLoginButton from 'react-google-login-button';
+//import GoogleLoginButton from 'react-google-login-button';
 import { loginUser } from "../actions/authActions";
 import NavBar from '../components/NavBar';
 
@@ -37,8 +37,8 @@ class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.state.role=nextProps.auth.users.role;
-      if(nextProps.auth.users.role == 'admin'){
+      this.setState({role : nextProps.auth.users.role});
+      if(nextProps.auth.users.role === 'admin'){
         this.props.history.push("/dashboard");
       }
       else{
@@ -53,9 +53,9 @@ class Login extends Component {
 
   render() {
     const { errors } = this.state;
-    const responseGoogle = (response) => {
-      console.log(response);
-    }
+    // const responseGoogle = (response) => {
+    //   console.log(response);
+    // }
     return (
       <div>
         <NavBar/>
@@ -73,7 +73,7 @@ class Login extends Component {
                       width="60px"
                       className="sticky-logo img-fluid"
                     />
-                    <h3>KnowHow</h3>
+                    <h3>MMC Calgary</h3>
                   </div>
                   <h4 className="mb-3 f-w-400">Login into your account</h4>
 
@@ -139,7 +139,7 @@ class Login extends Component {
                           type="checkbox"
                           name="checkbox-fill-1"
                           id="checkbox-fill-a1"
-                          checked=""
+                          defaultChecked=""
                         />
 
                         <input
@@ -168,7 +168,7 @@ class Login extends Component {
                   <p className="mb-0 text-muted">
                     Don’t have an account?{" "}
                     <a
-                      href={`${process.env.PUBLIC_URL}/register/`+this.props.match.params.role}
+                      href={`${process.env.PUBLIC_URL}/register-`+this.props.match.params.role}
                       className="f-w-400"
                     >
                       Signup

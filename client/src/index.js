@@ -39,6 +39,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import * as serviceWorker from "./serviceWorker";
 
 import PrivateRoute from "./components/common/PrivateRoute";
+import PrivateAdminRoute from "./components/common/PrivateAdminRoute";
 import LoginFirst from "./components/common/LoginFirst";
 //actions
 import { setCurrentUser, logoutUser } from "./actions/authActions";
@@ -162,12 +163,12 @@ class Root extends Component {
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/login/:role`}
+              path={`${process.env.PUBLIC_URL}/login-:role`}
               component={Login}
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/register/:role`}
+              path={`${process.env.PUBLIC_URL}/register-:role`}
               component={Register}
             />
             <PrivateRoute
@@ -185,7 +186,7 @@ class Root extends Component {
               path={`${process.env.PUBLIC_URL}/allusers/edit/:id`}
               component={EditUser}
             />
-            <PrivateRoute
+            <PrivateAdminRoute
               exact
               path={`${process.env.PUBLIC_URL}/dashboard`}
               component={Dashboard}
