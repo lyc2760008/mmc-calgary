@@ -7,7 +7,19 @@ const CourseSchema = new Schema(
       type: String,
       required: true
     },
+    courseImg: {
+      type: String,
+      required: true
+    },
+    courseSchedule: {
+      type: String,
+      required: true
+    },
     courseDescription: {
+      type: String,
+      required: true
+    },
+    instructorName: {
       type: String,
       required: true
     },

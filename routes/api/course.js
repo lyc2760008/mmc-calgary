@@ -71,6 +71,18 @@ router.get("/course", (req, res) => {
     });
 });
 
+router.get('/course/:id', (req, resp) => {
+  coursemodel.find({_id: req.params.id}, (err, data) => {
+     if (err) {
+        resp.json({ message: 'Course not found' });
+     } else {
+        //console.log(data);
+        resp.json(data);
+     }
+  });
+});
+
+
 //get courses by instructor id
 router.get("/coursebyinstructor", (req, res) => {
   //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
