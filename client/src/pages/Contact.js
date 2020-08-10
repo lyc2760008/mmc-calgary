@@ -1,8 +1,48 @@
 import React, {Component} from 'react';
+
+import * as emailjs from 'emailjs-com'
+
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
 class Contact extends Component{
+    state = {
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      }
+
+      handleSubmit(e) {
+        e.preventDefault()
+        const { name, email, subject, message } = this.state
+        let templateParams = {
+          from_name: email,
+          to_name: 'mmceducationcalgary@gmail.com',
+          subject: subject,
+          message_html: message,
+         }
+         emailjs.send(
+          'gmail',
+          'template_1U4StUgR',
+           templateParams,
+          'user_r2QlyWnK4zo0AfmgZq2Xl'
+         )
+         {console.log('sent');}
+         this.resetForm()
+     }
+    resetForm() {
+        this.setState({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        })
+      }
+    handleChange = (param, e) => {
+        this.setState({ [param]: e.target.value })
+      }  
+
     render(){
         return(
             <div>
@@ -65,11 +105,40 @@ class Contact extends Component{
                         <div className="col-lg-8 col-12">
                         <div className="contact-form">
                             <h3>Leave Your Message</h3>
-                            <form id="contact-form">
+                            <form id="contact-form" onSubmit={this.handleSubmit.bind(this)}>
                             <div className="row row-10">
-                                <div className="col-md-6 col-12 section-space--bottom--20"><input name="con_name" type="text" placeholder="Your Name" /></div>
-                                <div className="col-md-6 col-12 section-space--bottom--20"><input name="con_email" type="email" placeholder="Your Email" /></div>
-                                <div className="col-12"><textarea name="con_message" placeholder="Your Message" defaultValue={""} /></div>
+                                <div className="col-md-6 col-12 section-space--bottom--20">
+                                    <input type="text"
+                                        name="name"
+                                        value={this.state.name}
+                                        className="text-primary"
+                                        onChange={this.handleChange.bind(this, 'name')}
+                                        placeholder="Your Name" />
+                                </div>
+                                <div className="col-md-6 col-12 section-space--bottom--20">
+                                    <input type="text"
+                                        name="subject"
+                                        className="text-primary"
+                                        value={this.state.subject}
+                                        onChange={this.handleChange.bind(this, 'subject')}
+                                        placeholder="Subject" />
+                                </div>
+                                <div className="col-12 section-space--bottom--20">
+                                    <input type="email"
+                                        name="email"
+                                        value={this.state.email}
+                                        className="text-primary"
+                                        onChange={this.handleChange.bind(this, 'email')}
+                                        placeholder="Your Email"/>
+                                </div>
+                                <div className="col-12">
+                                    <textarea type="textarea"
+                                        name="message"
+                                        placeholder="Your Message"
+                                        className="text-primary"
+                                        value={this.state.message}
+                                        onChange={this.handleChange.bind(this, 'message')} />
+                                </div>
                                 <div className="col-12"><button>Send Message</button></div>
                             </div>
                             </form>

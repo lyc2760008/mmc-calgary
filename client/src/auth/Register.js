@@ -46,7 +46,7 @@ class Register extends Component {
       .post("/users/register", newUser)
       .then(res => console.log(res.data))
       .catch(err => this.setState({ errors: err.response.data }));
-      this.props.history.push("/login/"+this.props.match.params.role)
+      this.props.history.push("/login-"+this.props.match.params.role)
     //call registerUser action and pass user data in argument
    // this.props.registerUser(newUser, this.props.history);
   }
