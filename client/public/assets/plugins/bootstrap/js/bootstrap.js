@@ -1,3 +1,7 @@
+/* eslint-disable no-mixed-operators */
+/* eslint-disable no-useless-concat */
+/* eslint-disable no-loop-func */
+/* eslint-disable no-undef */
 /*!
   * Bootstrap v4.2.1 (https://getbootstrap.com/)
   * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
@@ -7,7 +11,7 @@
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('popper.js'), require('jquery')) :
   typeof define === 'function' && define.amd ? define(['exports', 'popper.js', 'jquery'], factory) :
   (factory((global.bootstrap = {}),global.Popper,global.jQuery));
-}(this, (function (exports,Popper,$) { 'use strict';
+}(this, (function (exports,Popper,$) { 
 
   Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;

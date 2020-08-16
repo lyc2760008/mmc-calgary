@@ -1,4 +1,17 @@
-"use strict";(function(root,factory){if(typeof exports==='object'){module.exports=factory();}
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-mixed-operators */
+/* eslint-disable no-extend-native */
+/* eslint-disable no-self-compare */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-cond-assign */
+/* eslint-disable no-redeclare */
+/* eslint-disable default-case */
+/* eslint-disable no-loop-func */
+/* eslint-disable no-throw-literal */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+(function(root,factory){if(typeof exports==='object'){module.exports=factory();}
 else if(typeof define==='function'&&define.amd){define(['jquery','googlemaps!'],factory);}
 else{root.GMaps=factory();}}(this,function(){/*!
 * GMaps.js v0.4.24
@@ -18,7 +31,7 @@ return new google.maps.LatLng(first_coord,second_coord);};var arrayToLatLng=func
 else{coords[i]=coordsToLatLngs(coords[i],useGeoJSON);}}}
 return coords;};var getElementsByClassName=function(class_name,context){var element,_class=class_name.replace('.','');if('jQuery'in this&&context){element=$("."+_class,context)[0];}else{element=document.getElementsByClassName(_class)[0];}
 return element;};var getElementById=function(id,context){var element,id=id.replace('#','');if('jQuery'in window&&context){element=$('#'+id,context)[0];}else{element=document.getElementById(id);};return element;};var findAbsolutePosition=function(obj){var curleft=0,curtop=0;if(obj.offsetParent){do{curleft+=obj.offsetLeft;curtop+=obj.offsetTop;}while(obj=obj.offsetParent);}
-return[curleft,curtop];};var GMaps=(function(global){"use strict";var doc=document;var GMaps=function(options){if(!(typeof window.google==='object'&&window.google.maps)){if(typeof window.console==='object'&&window.console.error){console.error('Google Maps API is required. Please register the following JavaScript library https://maps.googleapis.com/maps/api/js.');}
+return[curleft,curtop];};var GMaps=(function(global){var doc=document;var GMaps=function(options){if(!(typeof window.google==='object'&&window.google.maps)){if(typeof window.console==='object'&&window.console.error){console.error('Google Maps API is required. Please register the following JavaScript library https://maps.googleapis.com/maps/api/js.');}
 return function(){};}
 if(!this)return new GMaps(options);options.zoom=options.zoom||15;options.mapType=options.mapType||'roadmap';var valueOrDefault=function(value,defaultValue){return value===undefined?defaultValue:value;};var self=this,i,events_that_hide_context_menu=['bounds_changed','center_changed','click','dblclick','drag','dragend','dragstart','idle','maptypeid_changed','projection_changed','resize','tilesloaded','zoom_changed'],events_that_doesnt_hide_context_menu=['mousemove','mouseout','mouseover'],options_to_be_deleted=['el','lat','lng','mapType','width','height','markerClusterer','enableNewStyle'],identifier=options.el||options.div,markerClustererFunction=options.markerClusterer,mapType=google.maps.MapTypeId[options.mapType.toUpperCase()],map_center=new google.maps.LatLng(options.lat,options.lng),zoomControl=valueOrDefault(options.zoomControl,true),zoomControlOpt=options.zoomControlOpt||{style:'DEFAULT',position:'TOP_LEFT'},zoomControlStyle=zoomControlOpt.style||'DEFAULT',zoomControlPosition=zoomControlOpt.position||'TOP_LEFT',panControl=valueOrDefault(options.panControl,true),mapTypeControl=valueOrDefault(options.mapTypeControl,true),scaleControl=valueOrDefault(options.scaleControl,true),streetViewControl=valueOrDefault(options.streetViewControl,true),overviewMapControl=valueOrDefault(overviewMapControl,true),map_options={},map_base_options={zoom:this.zoom,center:map_center,mapTypeId:mapType},map_controls_options={panControl:panControl,zoomControl:zoomControl,zoomControlOptions:{style:google.maps.ZoomControlStyle[zoomControlStyle],position:google.maps.ControlPosition[zoomControlPosition]},mapTypeControl:mapTypeControl,scaleControl:scaleControl,streetViewControl:streetViewControl,overviewMapControl:overviewMapControl};if(typeof(options.el)==='string'||typeof(options.div)==='string'){if(identifier.indexOf("#")>-1){this.el=getElementById(identifier,options.context);}else{this.el=getElementsByClassName.apply(this,[identifier,options.context]);}}else{this.el=identifier;}
 if(typeof(this.el)==='undefined'||this.el===null){throw 'No element defined.';}
@@ -180,7 +193,7 @@ return inPoly;};}
 if(!google.maps.Circle.prototype.containsLatLng){google.maps.Circle.prototype.containsLatLng=function(latLng){if(google.maps.geometry){return google.maps.geometry.spherical.computeDistanceBetween(this.getCenter(),latLng)<=this.getRadius();}
 else{return true;}};}
 google.maps.Rectangle.prototype.containsLatLng=function(latLng){return this.getBounds().contains(latLng);};google.maps.LatLngBounds.prototype.containsLatLng=function(latLng){return this.contains(latLng);};google.maps.Marker.prototype.setFences=function(fences){this.fences=fences;};google.maps.Marker.prototype.addFence=function(fence){this.fences.push(fence);};google.maps.Marker.prototype.getId=function(){return this['__gm_id'];};}
-if(!Array.prototype.indexOf){Array.prototype.indexOf=function(searchElement){"use strict";if(this==null){throw new TypeError();}
+if(!Array.prototype.indexOf){Array.prototype.indexOf=function(searchElement){if(this==null){throw new TypeError();}
 var t=Object(this);var len=t.length>>>0;if(len===0){return-1;}
 var n=0;if(arguments.length>1){n=Number(arguments[1]);if(n!=n){n=0;}else if(n!=0&&n!=Infinity&&n!=-Infinity){n=(n>0||-1)*Math.floor(Math.abs(n));}}
 if(n>=len){return-1;}

@@ -1,4 +1,6 @@
-"use strict";
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-undef */
+
 $(document).ready(function(){
 
     /*=============================================
@@ -165,7 +167,7 @@ $(document).ready(function(){
 
                 
             $('.landing-page-wrapper a[href*="#"]:not([href="#"])').click(function() {
-            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            if (location.pathname.replace(/^\//,'') === this.pathname.replace(/^\//,'') && location.hostname === this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
             if (target.length) {
