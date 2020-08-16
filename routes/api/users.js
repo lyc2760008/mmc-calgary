@@ -125,6 +125,7 @@ router.get(
     res.json({
       id: req.user.id,
       first_name: req.user.first_name,
+      last_name: req.user.last_name,
       email: req.user.email
     });
   }

@@ -129,7 +129,7 @@ class NavBar extends Component {
       var authLinks = (
         <React.Fragment>
           <li className="has-children has-children--multilevel-submenu">
-            <a>COURSES</a>
+            <a href="#">COURSES</a>
             <ul className="submenu">
               <li>
                 <a
@@ -146,7 +146,7 @@ class NavBar extends Component {
             </ul>
           </li>
           <li className="inactive">
-            <a
+            <a href="#"
               onClick={this.onLogoutClick.bind(this)}
               className="nav-link"
             >
@@ -197,7 +197,6 @@ class NavBar extends Component {
               </li> */}
           <li className="inactive">
             <a
-              href
               onClick={this.onLogoutClick.bind(this)}
               className="nav-link"
             >

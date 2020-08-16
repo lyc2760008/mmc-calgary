@@ -28,7 +28,6 @@ class Contact extends Component{
            templateParams,
           'user_r2QlyWnK4zo0AfmgZq2Xl'
          )
-         {console.log('sent');}
          this.resetForm()
      }
     resetForm() {

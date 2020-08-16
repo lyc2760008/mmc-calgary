@@ -19,6 +19,10 @@ const CourseSchema = new Schema(
       type: String,
       required: true
     },
+    price: {
+      type: Number,
+      required: true
+    },
     instructorName: {
       type: String,
       required: true

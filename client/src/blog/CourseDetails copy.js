@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-//import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import NavBar from "../components/NavBar";
+//import BrandLogoSlider from "../components/BrandLogoSlider";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import axios from "axios";
 
 import Modal from 'react-bootstrap/Modal'
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 //import {StripeProvider, Elements} from 'react-stripe-elements';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-//import PaymentForm from './PaymentForm'
+import PaymentForm from './PaymentForm'
 import CheckoutForm from './CheckoutForm'
-//import CheckoutForm2 from './CheckoutForm2'
+import CheckoutForm2 from './CheckoutForm2'
 
 
 //import VideoList from "./VideoList";
@@ -30,36 +32,72 @@ class BlogDetailsLeftSidebar extends Component {
       enrolled: "",
       buttonclass: "",
       payShow: false,
-      amt: 0,
-      courseName:"",
-      courseId:"",
+      addcourse: false
     };
+
+    this.onClick = this.onClick.bind(this);
   }
 
   handleClose = () => {
-    //close Pay Modal  
+    //close About Modal  
       this.setState({payShow: false})
   }
 
   handleShow = () => {
-    //show Pay Modal
+    //show About Modal
       this.setState({payShow: true})
   }
 
-  async componentDidMount() {
+  // onRegister(e){
+  //   e.preventDefault();
+  //   console.log("register botton clicked");
+  //   this.setState({payShow:true});
+  // }
 
-    try {
-      const url = "/course/" + this.props.match.params.id;
-        const response = await fetch(url);
-        const jsonData=await response.json()
-        this.setState( {amt: jsonData[0].price} );
-        this.setState( {courseName: jsonData[0].courseName} );
-        this.setState( {courseId:jsonData[0]._id} );
-        console.log(jsonData);      
-        }
-        catch (error) {
-          console.error(error);
-        }
+  onClick(e) {
+    e.preventDefault(); //ensure that the default HTML form submit behaviour is prevented
+    // this.setState({
+    //     course: this.props.match.params.id,
+    //     student: '5d3b601b4b04af228ab854a1',
+    //     approved: true
+    // });
+    console.log(`Form submitted:`);
+
+    console.log(`Todo studentid: ` + this.state.user);
+    console.log(`Todo courseid: ` + this.props.match.params.id);
+    //console.log(`Todo approved: `);
+
+    const newTodo = {
+      student: this.state.user,
+      course: this.props.match.params.id,
+      approved: true
+    };
+    if (this.state.buttonclass === "btn btn-success") {
+      axios
+        .post("/enrollbystudent/add", newTodo)
+        .then(result => {
+          //this.props.history.push("/addtoplaylist/"+this.props.match.params.id)
+          toast.success("Added successfully");
+        })
+        .catch(err => {
+          // then print response status
+          toast.error("Course not added");
+        });
+        this.setState({
+          enrolled: "ALREADY ENROLLED",
+          buttonclass: "btn btn-danger"
+        });
+    } else {
+      console.log(this.state.buttonclass);
+      toast.error("Course already added");
+    }
+  }
+  async componentDidMount() {
+    if (this.state.userRole === "student") {
+      this.setState({
+        addcourse: true
+      });
+    }
 
     const response = await axios
       .get("/course/" + this.props.match.params.id)
@@ -85,12 +123,14 @@ class BlogDetailsLeftSidebar extends Component {
               });
             } else {
               this.setState({
-                enrolled: `Register for ${this.state.courseName}`,
+                enrolled: "ADD TO COURSE LIST",
                 buttonclass: "btn btn-success"
               });
+              console.log(result.data);
             }
+            //return result;
           });
-        //console.log(result);
+        console.log(result);
         return result;
       });
 
@@ -176,27 +216,34 @@ class BlogDetailsLeftSidebar extends Component {
 
                 <div className="col-lg-4">
                   <div>
-                    {this.state.enrolled !== "ALREADY ENROLLED" ?
-                    <Button variant="primary" className={this.state.buttonclass} onClick={this.handleShow}>
+                    <ToastContainer />
+                    <button
+                      type="button"
+                      style={this.state.addcourse ? {} : { display: "none" }}
+                      className={this.state.buttonclass}
+                      onClick={this.onClick}
+                    >
                       {this.state.enrolled}
+                    </button>
+                    {/* <button
+                      type="button"
+                      className="btn btn-success"
+                      onClick={this.onRegister}
+                    >
+                      Register
+                    </button> */}
+                    <Button variant="primary" className="btn btn-success" onClick={this.handleShow}>
+                      Register
                     </Button>
-                    :
-                    <Button variant="primary" className={this.state.buttonclass}>
-                      {this.state.enrolled}
-                    </Button>
-                    }
                     <Modal show={this.state.payShow} onHide={this.handleClose}>
-                      <Modal.Header>
-                      <Modal.Title>You are paying for: {this.state.courseName}</Modal.Title>
+                      <Modal.Header closeButton>
+                        <Modal.Title>COMP4513 - Assignment1</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
-                      <h5>Price: ${this.state.amt/100}</h5>
+                        <p>Group member: Yichen Li</p>asd
 
                         <Elements stripe={promise}>
-                          <CheckoutForm 
-                            amt = {this.state.amt}
-                            courseId = {this.state.courseId}  
-                          />
+                          <CheckoutForm amt = {8000}/>
                         </Elements>
                         
                       </Modal.Body>
