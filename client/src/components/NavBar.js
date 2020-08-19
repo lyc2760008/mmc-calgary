@@ -50,16 +50,19 @@ class NavBar extends Component {
                           style={{ width: "100%" }}
                         >
                           <nav className="main-nav">
-                            <a href={`${process.env.PUBLIC_URL}/`}>
+                            {/* <a href={`${process.env.PUBLIC_URL}/`}> */}
+                            <Link to="/">
                               <div className="logoHead">
                                 <img
+                                  style={{ width: "80px" }}
                                   src="/assets/img/logo/logo.png"
                                   alt=""
                                   className="sticky-logo img-fluid"
                                 />
                                 <h3>MMC Calgary</h3>
                               </div>
-                            </a>
+                              {/* </a> */}
+                            </Link>
 
                             <ul id="main-nav-ul">
                               <li>
@@ -107,7 +110,7 @@ class NavBar extends Component {
                                       marginRight: "5px"
                                     }}
                                     className="sticky-logo img-fluid"
-                                    //  title="You must have a Gravatar connected to your emial to display the image"
+                                  //  title="You must have a Gravatar connected to your emial to display the image"
                                   />{" "}
                                   LOGOUT
                                 </a>
@@ -132,16 +135,21 @@ class NavBar extends Component {
             <a href="#">COURSES</a>
             <ul className="submenu">
               <li>
-                <a
-                  href={
-                    `${process.env.PUBLIC_URL}/servicesforstudent-` + users.id
+                {/* <a href = */}
+                <Link to=
+                  {`/servicesforstudent-` + users.id
                   }
                 >
                   MY COURSES
-                </a>
+                {/* </a> */}
+                </Link>
               </li>
               <li>
-                <a href={`${process.env.PUBLIC_URL}/services`}>ALL COURSES</a>
+                {/* <a href={`${process.env.PUBLIC_URL}/services`}> */}
+                <Link to = '/services'>
+                  ALL COURSES
+                {/* </a> */}
+                </Link>
               </li>
             </ul>
           </li>
@@ -161,74 +169,74 @@ class NavBar extends Component {
         </React.Fragment>
       );
     }
-    if (users.role === "instructor") {
-      authLinks = (
-        <React.Fragment>
-          <li className="has-children has-children--multilevel-submenu">
-            <a>COURSES</a>
-            <ul className="submenu">
-              <li>
-                <a href={`${process.env.PUBLIC_URL}/services/` + users.id}>
-                  MY COURSES
-                </a>
-              </li>
-              <li>
-                <a href={`${process.env.PUBLIC_URL}/addcourse/` + users.id}>
-                  ADD COURSES
-                </a>
-              </li>
-              <li>
-                <a href={`${process.env.PUBLIC_URL}/add-lecture/` + users.id}>
-                  ADD LECTURE
-                </a>
-              </li>
-              <li>
-                <a href={`${process.env.PUBLIC_URL}/services`}>ALL COURSES</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href={`${process.env.PUBLIC_URL}/finaldashboard`}>PROFILE</a>{" "}
-          </li>
-          {/* <li>
-              <a href={`${process.env.PUBLIC_URL}/services/`}>
-                SERVICE
-              </a>{" "}
-              </li> */}
-          <li className="inactive">
-            <a
-              onClick={this.onLogoutClick.bind(this)}
-              className="nav-link"
-            >
-              <img
-                src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/04-512.png"
-                alt={users.first_name}
-                style={{ width: "25px", marginRight: "5px" }}
-                //  title="You must have a Gravatar connected to your emial to display the image"
-              />{" "}
-              LOGOUT
-            </a>
-          </li>
-        </React.Fragment>
-      );
-    }
+    // if (users.role === "instructor") {
+    //   authLinks = (
+    //     <React.Fragment>
+    //       <li className="has-children has-children--multilevel-submenu">
+    //         <a>COURSES</a>
+    //         <ul className="submenu">
+    //           <li>
+    //             <a href={`${process.env.PUBLIC_URL}/services/` + users.id}>
+    //               MY COURSES
+    //             </a>
+    //           </li>
+    //           <li>
+    //             <a href={`${process.env.PUBLIC_URL}/addcourse/` + users.id}>
+    //               ADD COURSES
+    //             </a>
+    //           </li>
+    //           <li>
+    //             <a href={`${process.env.PUBLIC_URL}/add-lecture/` + users.id}>
+    //               ADD LECTURE
+    //             </a>
+    //           </li>
+    //           <li>
+    //             <a href={`${process.env.PUBLIC_URL}/services`}>ALL COURSES</a>
+    //           </li>
+    //         </ul>
+    //       </li>
+    //       <li>
+    //         <a href={`${process.env.PUBLIC_URL}/finaldashboard`}>PROFILE</a>{" "}
+    //       </li>
+    //       {/* <li>
+    //           <a href={`${process.env.PUBLIC_URL}/services/`}>
+    //             SERVICE
+    //           </a>{" "}
+    //           </li> */}
+    //       <li className="inactive">
+    //         <a
+    //           onClick={this.onLogoutClick.bind(this)}
+    //           className="nav-link"
+    //         >
+    //           <img
+    //             src="https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/04-512.png"
+    //             alt={users.first_name}
+    //             style={{ width: "25px", marginRight: "5px" }}
+    //             //  title="You must have a Gravatar connected to your emial to display the image"
+    //           />{" "}
+    //           LOGOUT
+    //         </a>
+    //       </li>
+    //     </React.Fragment>
+    //   );
+    // }
     const guestLinks = (
       <React.Fragment>
         <li>
-          <Link className="nav-link" to="/login-student">
+          <Link className="nav-link" to="/login">
             LOGIN
           </Link>
         </li>
         <li>
-          <Link className="nav-link" to="/register-student">
+          <Link className="nav-link" to="/register">
             SIGN UP
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link className="nav-link" to="/login/instructor">
             Teach On MMC Calgary
           </Link>
-        </li>
+        </li> */}
       </React.Fragment>
     );
 
@@ -249,7 +257,8 @@ class NavBar extends Component {
                         style={{ width: "100%" }}
                       >
                         <nav className="main-nav">
-                          <a href={`${process.env.PUBLIC_URL}/`}>
+                          {/* <a href={`${process.env.PUBLIC_URL}/`}> */}
+                          <Link to="/">
                             <div className="logoHead">
                               <img
                                 style={{ width: "80px" }}
@@ -259,18 +268,23 @@ class NavBar extends Component {
                               />
                               <h3>MMC Calgary</h3>
                             </div>
-                          </a>
+                            {/* </a> */}
+                          </Link>
 
                           <ul id="main-nav-ul">
                             <li>
-                              <a href={`${process.env.PUBLIC_URL}/`}>
+                              {/* <a href={`${process.env.PUBLIC_URL}/`}> */}
+                              <Link to="/">
                                 HOME
-                              </a>
+                              {/* </a> */}
+                              </Link>
                             </li>
                             <li>
-                              <a href={`${process.env.PUBLIC_URL}/about-us`}>
+                              {/* <a href={`${process.env.PUBLIC_URL}/about-us`}> */}
+                              <Link to="/about-us">
                                 ABOUT
-                              </a>
+                              {/* </a> */}
+                              </Link>
                             </li>
 
                             {isAuthenticated ? authLinks : guestLinks}
@@ -295,11 +309,14 @@ class NavBar extends Component {
                               flexDirection: flexProp
                             }}
                           >
-                            <li className="has-children has-children--multilevel-submenu">
-                              <a href={`${process.env.PUBLIC_URL}/`}>
+                            <li>
+                              {/* <li className="has-children has-children--multilevel-submenu"> */}
+                              {/* <a href={`${process.env.PUBLIC_URL}/`}> */}
+                              <Link to="/">
                                 HOME
-                              </a>
-                              <ul className="submenu">
+                              {/* </a> */}
+                              </Link>
+                              {/* <ul className="submenu">
                                 <li>
                                   <a
                                     href={`${process.env.PUBLIC_URL}/home-two`}
@@ -307,12 +324,14 @@ class NavBar extends Component {
                                     Homepage Two
                                   </a>
                                 </li>
-                              </ul>
+                              </ul> */}
                             </li>
                             <li>
-                              <a href={`${process.env.PUBLIC_URL}/about-us`}>
+                              {/* <a href={`${process.env.PUBLIC_URL}/about-us`}> */}
+                              <Link to="/about-us">
                                 ABOUT
-                              </a>
+                              {/* </a> */}
+                              </Link>
                             </li>
                             {/* <li>
                               {" "}

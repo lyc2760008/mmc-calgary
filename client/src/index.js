@@ -23,13 +23,13 @@ import Forgot from "./auth/Forgot";
 import HomeTwo from "./HomeTwo";
 import About from "./pages/About";
 import Services from "./service/Services";
-import ServicesForInstructor from "./service/ServicesByInstructor";
+//import ServicesForInstructor from "./service/ServicesByInstructor";
 import Servicesforstudent from "./service/ServiceforStudent"
 import ServiceDetailsLeftSidebar from "./service/ServiceDetailsLeftSidebar";
 import Projects from "./project/Projects";
 import ProjectDetails from "./project/ProjectDetails";
 import BlogLeftSidebar from "./blog/BlogLeftSidebar";
-import AddCourse from "./blog/AddCourse";
+//import AddCourse from "./blog/AddCourse";
 import AddLecture from "./blog/Addlecture";
 import BlogDetailsLeftSidebar from "./blog/BlogDetailsLeftSidebar";
 import Contact from "./pages/Contact";
@@ -43,7 +43,7 @@ import PrivateAdminRoute from "./components/common/PrivateAdminRoute";
 import LoginFirst from "./components/common/LoginFirst";
 //actions
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-import { clearCurrentProfile } from "./actions/profileActions";
+//import { clearCurrentProfile } from "./actions/profileActions";
 
 //profile stuff
 
@@ -110,11 +110,11 @@ class Root extends Component {
               path={`${process.env.PUBLIC_URL}/servicesforstudent-:id`}
               component={Servicesforstudent}
             />
-             <PrivateRoute
+             {/* <PrivateRoute
               exact
               path={`${process.env.PUBLIC_URL}/services/:id`}
               component={ServicesForInstructor}
-            />
+            /> */}
             <PrivateRoute
               exact
               path={`${process.env.PUBLIC_URL}/services`}
@@ -141,11 +141,11 @@ class Root extends Component {
               path={`${process.env.PUBLIC_URL}/blog-left-sidebar`}
               component={BlogLeftSidebar}
             />
-              <PrivateRoute
+              {/* <PrivateRoute
               exact
               path={`${process.env.PUBLIC_URL}/addcourse/:id`}
               component={AddCourse}
-            />
+            /> */}
             <PrivateRoute
               exact
               path={`${process.env.PUBLIC_URL}/blog-details-left-sidebar/:id`}
@@ -163,12 +163,12 @@ class Root extends Component {
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/login-:role`}
+              path={`${process.env.PUBLIC_URL}/login`}
               component={Login}
             />
             <Route
               exact
-              path={`${process.env.PUBLIC_URL}/register-:role`}
+              path={`${process.env.PUBLIC_URL}/register`}
               component={Register}
             />
             <PrivateRoute

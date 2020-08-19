@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar";
-import BrandLogoSlider from "../components/BrandLogoSlider";
+//import BrandLogoSlider from "../components/BrandLogoSlider";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
+import {Link} from 'react-router-dom'
+
+
 class Services extends Component {
   state = {
     data: []
@@ -24,6 +27,7 @@ class Services extends Component {
   }
   render() {
     let data = this.state.data;
+    const user = JSON.parse(localStorage.getItem("userid"))
 
     let Datalist = data.map((val, i) => {
       return (
@@ -81,6 +85,22 @@ class Services extends Component {
               <div className="col">
                 <div className="page-banner text-center">
                   <h1>ALL COURSES</h1>
+                  <ul className="page-breadcrumb">
+                    <li>
+                      {/* <a href="/"> */}
+                      <Link to = '/'>
+                        Home
+                      {/* </a> */}
+                      </Link>
+                      </li>
+                      <li>
+                      <Link to = {`/servicesforstudent-${user}`}>
+                        My Courses
+                      </Link>
+                      </li>
+                    
+                    <li>All Courses</li>
+                  </ul>
                 </div>
               </div>
             </div>

@@ -37,7 +37,7 @@ class Register extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
-      role:  this.props.match.params.role
+      role: "student"
     };
 
     // console.log(newUser);
@@ -46,7 +46,9 @@ class Register extends Component {
       .post("/users/register", newUser)
       .then(res => console.log(res.data))
       .catch(err => this.setState({ errors: err.response.data }));
-      this.props.history.push("/login-"+this.props.match.params.role)
+      if(this.state.errors === {}){
+       this.props.history.push("/login")
+      }
     //call registerUser action and pass user data in argument
    // this.props.registerUser(newUser, this.props.history);
   }
@@ -207,11 +209,10 @@ class Register extends Component {
                       className="btn btn-primary shadow-2 mb-4"
                     />
                   </form>
-
                   <p className="mb-2">
                     Already have an account?{" "}
                     <a
-                      href={`${process.env.PUBLIC_URL}/login-`+this.props.match.params.role}
+                      href={`${process.env.PUBLIC_URL}/login`}
                       className="f-w-400"
                     >
                       Log in
