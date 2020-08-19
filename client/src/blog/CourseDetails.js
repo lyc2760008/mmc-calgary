@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 //import { ToastContainer, toast } from "react-toastify";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
@@ -114,11 +115,17 @@ class BlogDetailsLeftSidebar extends Component {
                 <div className="page-banner text-center">
                   <h1>Course Details</h1>
                   <ul className="page-breadcrumb">
-                    <li>
-                      <a href="/">Home</a>
+                  <li>
+                      {/* <a href="/"> */}
+                      <Link to = '/'>
+                        Home
+                      {/* </a> */}
+                      </Link>
                     </li>
                     <li>
-                      <a href="/services">All Courses</a>
+                      <Link to = '/services'>
+                        All Courses
+                      </Link>
                     </li>
                     <li>Course Details</li>
                   </ul>

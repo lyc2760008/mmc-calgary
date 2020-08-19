@@ -38,10 +38,15 @@ class Services extends Component {
           <div className="service-grid-item">
             <div className="service-grid-item__image">
               <div className="service-grid-item__image-wrapper">
-                <a
+                {/* <a
                   href={
                     `${process.env.PUBLIC_URL}/` +
                     `course-details-` +
+                    `${val._id}`
+                  } */}
+                <Link
+                  to={
+                    `/course-details-` +
                     `${val._id}`
                   }
                 >
@@ -50,19 +55,26 @@ class Services extends Component {
                     className="img-fluid"
                     alt="Service Grid"
                   />
-                </a>
+                </Link>
+                {/* </a> */}
               </div>
               <div className="service-grid-item__content">
                 <h3 className="title">
-                <a
+                {/* <a
                   href={
                     `${process.env.PUBLIC_URL}/` +
                     `course-details-` +
                     `${val._id}`
+                  } */}
+                <Link
+                  to={
+                    `/course-details-` +
+                    `${val._id}`
                   }
-                  >
+                >
                     {val.courseName}
-                  </a>
+                  {/* </a> */}
+                </Link>
                 </h3>
                 <p>{val.courseDescription}</p>
               </div>
