@@ -4,9 +4,6 @@ import NavBar from "../components/NavBar";
 //import BrandLogoSlider from "../components/BrandLogoSlider";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
-import {Link} from 'react-router-dom'
-
-
 class Services extends Component {
   state = {
     data: []
@@ -27,7 +24,6 @@ class Services extends Component {
   }
   render() {
     let data = this.state.data;
-    const user = JSON.parse(localStorage.getItem("userid"))
 
     let Datalist = data.map((val, i) => {
       return (
@@ -38,15 +34,10 @@ class Services extends Component {
           <div className="service-grid-item">
             <div className="service-grid-item__image">
               <div className="service-grid-item__image-wrapper">
-                {/* <a
+                <a
                   href={
                     `${process.env.PUBLIC_URL}/` +
                     `course-details-` +
-                    `${val._id}`
-                  } */}
-                <Link
-                  to={
-                    `/course-details-` +
                     `${val._id}`
                   }
                 >
@@ -55,26 +46,19 @@ class Services extends Component {
                     className="img-fluid"
                     alt="Service Grid"
                   />
-                </Link>
-                {/* </a> */}
+                </a>
               </div>
               <div className="service-grid-item__content">
                 <h3 className="title">
-                {/* <a
+                <a
                   href={
                     `${process.env.PUBLIC_URL}/` +
                     `course-details-` +
                     `${val._id}`
-                  } */}
-                <Link
-                  to={
-                    `/course-details-` +
-                    `${val._id}`
                   }
-                >
+                  >
                     {val.courseName}
-                  {/* </a> */}
-                </Link>
+                  </a>
                 </h3>
                 <p>{val.courseDescription}</p>
               </div>
@@ -99,18 +83,10 @@ class Services extends Component {
                   <h1>ALL COURSES</h1>
                   <ul className="page-breadcrumb">
                     <li>
-                      {/* <a href="/"> */}
-                      <Link to = '/'>
+                      <a href="/">
                         Home
-                      {/* </a> */}
-                      </Link>
-                      </li>
-                      <li>
-                      <Link to = {`/servicesforstudent-${user}`}>
-                        My Courses
-                      </Link>
-                      </li>
-                    
+                      </a>
+                    </li>
                     <li>All Courses</li>
                   </ul>
                 </div>
