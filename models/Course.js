@@ -19,6 +19,17 @@ const CourseSchema = new Schema(
       type: String,
       required: true
     },
+    courseDescriptions: {
+      courseDescription: {
+        type: String,
+        required: true
+      },
+      longDescription: {
+        type: String,
+        required: true
+      },
+
+    },
     price: {
       type: Number,
       required: true

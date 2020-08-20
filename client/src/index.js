@@ -122,7 +122,7 @@ class Root extends Component {
             />
             <PrivateRoute
               exact
-              path={`${process.env.PUBLIC_URL}/service-details-left-sidebar`}
+              path={`${process.env.PUBLIC_URL}/service-details-left-sidebar-:id`}
               component={ServiceDetailsLeftSidebar}
             />
             <PrivateRoute

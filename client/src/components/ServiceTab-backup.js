@@ -1,23 +1,25 @@
 import React, { Component } from "react";
+import axios from "axios";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-
 class ServiceTabExample extends Component {
   state = {
     data: []
   };
-
   async componentDidMount() {
+    //this.onTextSubmit("react tutorials");
 
-      try {
-      const url = "/courses";
-        const response = await fetch(url);
-        const jsonData=await response.json()
-        this.setState( {data: jsonData } );
-        }
-        catch (error) {
-          console.error(error);
-        }
-   }
+    const response = await axios
+      .get("/courses")
+      .then(result => {
+        //console.log(result.data);
+        return result;
+      });
+
+    this.setState({
+      data: response.data
+    });
+  }
+
 
   render() {
     /* service tab menu */
@@ -25,18 +27,18 @@ class ServiceTabExample extends Component {
       { iconName: "fas fa-crown", 
         tabMenuName: "【NEWS TALK】" 
       },
-      { iconName: "	fas fa-square-root-alt", 
-        tabMenuName: "Singapore Mathematics" 
+      {
+        iconName: "fab fa-canadian-maple-leaf",
+        tabMenuName: "English"
       },
       { iconName: "fas fa-spell-check", 
         tabMenuName: "English Master Writing" 
       },
+      { iconName: "	fas fa-square-root-alt", 
+        tabMenuName: "Singapore Mathematics" 
+      },
       { iconName: "fas fa-language", 
         tabMenuName: "Happy Chinese" 
-      },
-      {
-        iconName: "fab fa-canadian-maple-leaf",
-        tabMenuName: "English"
       }
     ];
 
@@ -54,10 +56,47 @@ class ServiceTabExample extends Component {
 
     /* service tab content */
 
+    let serviceTabContentData = [
+      {
+        bgUrl: "service-tab1.jpg",
+        contentTitle: "News Talk...",
+        contentDesc:
+          "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        serviceLink: "service-details-left-sidebar"
+      },
+      {
+        bgUrl: "service-tab1.jpg",
+        contentTitle: "English",
+        contentDesc:
+          "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        serviceLink: "service-details-left-sidebar"
+      },
+      {
+        bgUrl: "service-tab1.jpg",
+        contentTitle: "English Master Writing",
+        contentDesc:
+          "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        serviceLink: "service-details-left-sidebar"
+      },
+      {
+        bgUrl: "service-tab4.jpg",
+        contentTitle: "Singapore Mathematics",
+        contentDesc:
+          "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        serviceLink: "service-details-left-sidebar"
+      },
+      {
+        bgUrl: "service-tab5.png",
+        contentTitle: "Learn Mandarin...",
+        contentDesc:
+          "Lorem ipsum dolor sit amet, consectet adipisicin elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        serviceLink: "service-details-left-sidebar"
+      }
+    ];
+
     let data = this.state.data;
 
-    //let serviceTabContentDatalist = serviceTabContentData.map((val, i) => {
-    let serviceTabContentDatalist = data.map((val, i) => {
+    let serviceTabContentDatalist = serviceTabContentData.map((val, i) => {
       return (
         <TabPanel key={i}>
           <div
@@ -70,7 +109,7 @@ class ServiceTabExample extends Component {
               <h3 className="service-tab__title">{val.courseName}</h3>
               <p className="service-tab__text">{val.courseDescription}</p>
               <a
-                href={`${process.env.PUBLIC_URL}/service-details-left-sidebar-${val._id}`}
+                href={`${process.env.PUBLIC_URL}/${val.serviceLink}`}
                 className="see-more-link"
               >
                 SEE MORE
@@ -82,7 +121,6 @@ class ServiceTabExample extends Component {
     });
     
     return (
-      this.state.data.length !==0 &&
       <div>
         {/*====================  service tab area ====================*/}
         <div className="service-tab-area section-space--inner--120">

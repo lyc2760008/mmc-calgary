@@ -156,7 +156,7 @@ class Login extends Component {
                       Login
                     </button>
                   </form>
-                  {/* <p className="mb-2 text-muted">
+                  <p className="mb-2 text-muted">
                     Forgot password?{" "}
                     <a
                       href={`${process.env.PUBLIC_URL}/forgot-password`}
@@ -164,7 +164,7 @@ class Login extends Component {
                     >
                       Reset
                     </a>
-                  </p> */}
+                  </p>
                   <p className="mb-0 text-muted">
                     Don’t have an account?{" "}
                     <a

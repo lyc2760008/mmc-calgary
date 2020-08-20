@@ -2,13 +2,38 @@ import React, {Component} from 'react';
 import NavBar from '../components/NavBar';
 import Sidebar from './components/Sidebar';
 import ServiceGallery from './components/ServiceGallery';
-import BrandLogoSlider from '../components/BrandLogoSlider';
+//import BrandLogoSlider from '../components/BrandLogoSlider';
 import RegisterButton from './components/RegisterButton'
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
+import CourseRegister from '../blog/CourseRegister'
+
 class ServiceDetailsLeftSidebar extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+          data: [],
+          selectedVideo: null,
+        };
+      }
+
+      async componentDidMount() {
+        try {
+          const url = "/course/" + this.props.match.params.id;
+            const response = await fetch(url);
+            const jsonData=await response.json()
+            this.setState( {data: jsonData} );
+            console.log(jsonData);      
+            }
+            catch (error) {
+              console.error(error);
+            }
+      }
+
     render(){
+        let course = this.state.data[0];
         return(
+            course !== undefined && 
             <div>
                 {/* Navigation bar */}
                 <NavBar/>
@@ -43,30 +68,32 @@ class ServiceDetailsLeftSidebar extends Component{
                                 <ServiceGallery/>
 
                                 <div className="content section-space--top--30">
-                                <div className="row">
-                                    <div className="col-12">
-                                    <h2>Construction</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione, sunt perspiciatis error id ipsa atque unde quis dolore nobis eum aperiam enim blanditiis pariatur inventore eius commodi consectetur ut. Totam, assumenda! Laboriosam possimus, corporis dicta!</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aliquid quod, officiis unde nostrum itaque! Adipisci dolorum, ab dolor, exercitationem praesentium dolorem quo voluptatum itaque dignissimos, sit esse cupiditate. Doloremque rerum similique a nobis placeat in illum, quo quaerat, ut repellat, fuga itaque? Nihil mollitia nisi, nam, accusantium nemo consequuntur reiciendis autem dicta consequatur earum beatae dolor distinctio, debitis repudiandae?</p>
+                                    <div className="row">
+                                        <div className="col-12">
+                                        <h2>{course.courseName}</h2>
+                                        <p>{course.courseDescriptions.courseDescription}</p>
+                                        <p>{course.courseDescriptions.longDescription}</p>
+                                        </div>
+                                        <div className="col-lg-6 col-12 section-space--top--30">
+                                        <h3>Learning Plan</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
+                                        </div>
+                                        <div className="col-lg-6 col-12 section-space--top--30">
+                                        <h3>Learning Analysis</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
+                                        </div>
+                                        <div className="col-lg-6 col-12 section-space--top--30">
+                                        <h3>Learning strategy</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
+                                        </div>
+                                        <div className="col-lg-6 col-12 section-space--top--30">
+                                        <h3>Learning Outcomes</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
+                                        </div>
                                     </div>
-                                    <div className="col-lg-6 col-12 section-space--top--30">
-                                    <h3>Project Analysis</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
+                                    <div className="content section-space--top--30" style={{textAlign:"center"}}>
+                                        <CourseRegister id={this.props.match.params.id}/>
                                     </div>
-                                    <div className="col-lg-6 col-12 section-space--top--30">
-                                    <h3>Project Costing</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
-                                    </div>
-                                    <div className="col-lg-6 col-12 section-space--top--30">
-                                    <h3>Project Planning</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
-                                    </div>
-                                    <div className="col-lg-6 col-12 section-space--top--30">
-                                    <h3>Project Strategy</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, animi? Vel quas in minima qui totam, aliquid dolores quaerat voluptatum?</p>
-                                    </div>
-                                </div>
-                                <RegisterButton />
                                 </div>
                             </div>
                             </div>

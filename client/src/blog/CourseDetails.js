@@ -1,49 +1,17 @@
 import React, { Component } from "react";
-//import { ToastContainer, toast } from "react-toastify";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
-import axios from "axios";
 
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button';
-//import {StripeProvider, Elements} from 'react-stripe-elements';
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-
-//import PaymentForm from './PaymentForm'
-import CheckoutForm from './CheckoutForm'
-//import CheckoutForm2 from './CheckoutForm2'
-
-
-//import VideoList from "./VideoList";
-//import VideoDetail from "./VideoDetail";
+import CourseRegister from './CourseRegister'
 
 class BlogDetailsLeftSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
-      user: JSON.parse(localStorage.getItem("userid")),
-      userRole: JSON.parse(localStorage.getItem("userRole")),
       selectedVideo: null,
-      enrolled: "",
-      buttonclass: "",
-      payShow: false,
-      amt: 0,
-      courseName:"",
-      courseId:"",
     };
-  }
-
-  handleClose = () => {
-    //close Pay Modal  
-      this.setState({payShow: false})
-  }
-
-  handleShow = () => {
-    //show Pay Modal
-      this.setState({payShow: true})
   }
 
   async componentDidMount() {
@@ -52,55 +20,15 @@ class BlogDetailsLeftSidebar extends Component {
       const url = "/course/" + this.props.match.params.id;
         const response = await fetch(url);
         const jsonData=await response.json()
-        this.setState( {amt: jsonData[0].price} );
-        this.setState( {courseName: jsonData[0].courseName} );
-        this.setState( {courseId:jsonData[0]._id} );
+        this.setState( {data: jsonData} );
         console.log(jsonData);      
         }
         catch (error) {
           console.error(error);
         }
-
-    const response = await axios
-      .get("/course/" + this.props.match.params.id)
-      .then(result => {
-        console.log(
-          "/checkenrollment?id=" +
-            this.state.user +
-            "&&courseid=" +
-            this.props.match.params.id
-        );
-        axios
-          .get(
-            "/checkenrollment?id=" +
-              this.state.user +
-              "&&courseid=" +
-              this.props.match.params.id
-          )
-          .then(result => {
-            if (result.data) {
-              this.setState({
-                enrolled: "ALREADY ENROLLED",
-                buttonclass: "btn btn-danger"
-              });
-            } else {
-              this.setState({
-                enrolled: `Register for ${this.state.courseName}`,
-                buttonclass: "btn btn-success"
-              });
-            }
-          });
-        //console.log(result);
-        return result;
-      });
-
-    this.setState({
-      data: response.data,
-    });
   }
 
   render() {
-    const promise = loadStripe("pk_test_51HGSPHEKz6NW9w2TRPkTwVwpAZ3UMek59RpJbQpxB6kcy2yIEmwcPQcXH45gqTbWUh39IwH2HosGBy8d8q2OZesp00jM0L4Ylz")
     return (
       <div>
         {/* Navigation bar */}
@@ -143,7 +71,8 @@ class BlogDetailsLeftSidebar extends Component {
                       {this.state.data[0]&&
                       <div>
                         <h3>{this.state.data[0].courseName}</h3>  
-                        <h5>{this.state.data[0].courseDescription}</h5>
+                        <h5>{this.state.data[0].courseDescriptions.courseDescription}</h5>
+                        <h5>{this.state.data[0].courseDescriptions.longDescription}</h5>
                         <h5>This Course is scheduled from:{this.state.data[0].courseSchedule}</h5>
                       </div>  
                       }
@@ -174,40 +103,7 @@ class BlogDetailsLeftSidebar extends Component {
                   </div>
                 </div>
 
-                <div className="col-lg-4">
-                  <div>
-                    {this.state.enrolled !== "ALREADY ENROLLED" ?
-                    <Button variant="primary" className={this.state.buttonclass} onClick={this.handleShow}>
-                      {this.state.enrolled}
-                    </Button>
-                    :
-                    <Button variant="primary" className={this.state.buttonclass}>
-                      {this.state.enrolled}
-                    </Button>
-                    }
-                    <Modal show={this.state.payShow} onHide={this.handleClose}>
-                      <Modal.Header>
-                      <Modal.Title>You are paying for: {this.state.courseName}</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body>
-                      <h5>Price: ${this.state.amt/100}</h5>
-
-                        <Elements stripe={promise}>
-                          <CheckoutForm 
-                            amt = {this.state.amt}
-                            courseId = {this.state.courseId}  
-                          />
-                        </Elements>
-                        
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                          Close
-                        </Button>
-                      </Modal.Footer>
-                    </Modal>
-                  </div>
-                </div>
+                <CourseRegister id={this.props.match.params.id}/>
 
                 {/* <div className="col-12">
                   <PhotoGallery />
