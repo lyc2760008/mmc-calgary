@@ -10,18 +10,17 @@ const category = require("./routes/api/category");
 const enroll = require("./routes/api/enrollRoute");
 const role = require("./routes/api/role");
 const lecture = require("./routes/api/lecture");
-const fileUpload = require('express-fileupload');
-var multer = require('multer')
-var cors = require('cors');
-const profile = require('./routes/api/profile');
-
+const fileUpload = require("express-fileupload");
+var multer = require("multer");
+var cors = require("cors");
+const profile = require("./routes/api/profile");
 
 const app = express();
 
 // Db Config
 const db = require("./config/keys").mongoURI;
 const secret = require("./config/keys").secretOrKey;
-const stripe = require("stripe")(secret)
+const stripe = require("stripe")(secret);
 
 //Passport middileware
 passport.use(passport.initialize());
@@ -30,8 +29,14 @@ passport.use(passport.initialize());
 require("./config/passport")(passport);
 app.use(fileUpload());
 //Body Parser
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit:1000000}));
-app.use(bodyParser.json({limit: '50mb', extended: true}));
+app.use(
+  bodyParser.urlencoded({
+    limit: "50mb",
+    extended: true,
+    parameterLimit: 1000000,
+  })
+);
+app.use(bodyParser.json({ limit: "50mb", extended: true }));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -53,7 +58,7 @@ app.post("/create-payment-intent", async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
     customer: customer.id,
     amount: items[0].amt,
-    currency: "cad"
+    currency: "cad",
   });
   console.log("amount to be charged: " + items[0].amt);
   //console.log(paymentIntent);
@@ -62,21 +67,22 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
-
 //Connect to mongodb through mongoose
 mongoose
   .connect(db, {
-    useNewUrlParser: true, useUnifiedTopology: true,
-    useCreateIndex: true, useFindAndModify: false
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("MongoDB connected..."))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 // app.get("/", (req, res) => res.send("Hello World"));
 
 //Use routes
 app.use(cors());
-app.options("*", cors()); 
+app.options("*", cors());
 app.use(users);
 app.use(course);
 app.use(category);
@@ -86,8 +92,7 @@ app.use(role);
 app.use("/api/profile", profile);
 
 if (process.env.NODE_ENV === "production") {
-
-  // Set static folder   
+  // Set static folder
   // All the javascript and css files will be read and served from this folder
   app.use(express.static("client/build"));
 
@@ -99,4 +104,4 @@ if (process.env.NODE_ENV === "production") {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server running on Port ${port}`));
+app.listen(port, () => console.log(`Server running on the Port ${port}`));
