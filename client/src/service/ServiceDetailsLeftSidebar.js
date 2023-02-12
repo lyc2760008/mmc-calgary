@@ -3,7 +3,6 @@ import NavBar from '../components/NavBar';
 import Sidebar from './components/Sidebar';
 import ServiceGallery from './components/ServiceGallery';
 //import BrandLogoSlider from '../components/BrandLogoSlider';
-import RegisterButton from './components/RegisterButton'
 import Footer from '../components/Footer';
 import MobileMenu from '../components/MobileMenu';
 import CourseRegister from '../blog/CourseRegister'
