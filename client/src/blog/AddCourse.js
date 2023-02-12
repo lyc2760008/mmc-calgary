@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 import axios from "axios";
 // import ShowCategory from './ShowCategory';
 
-const ShowCat = props => (
+const ShowCat = (props) => (
   <option key={props.todo._id} value={props.todo.categoryName}>
     {props.todo.categoryName}
   </option>
@@ -18,7 +18,7 @@ export default class AddCourse extends Component {
       courseDescription: "",
       instructor: this.props.match.params.id,
       category: "",
-      todos: []
+      todos: [],
     };
     this.onChangeCourseName = this.onChangeCourseName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
@@ -28,21 +28,21 @@ export default class AddCourse extends Component {
   componentDidMount() {
     //to get data from mongo link
     axios
-      .get("http://localhost:5000/categories/")
-      .then(response => {
+      .get("http://localhost:5001/categories/")
+      .then((response) => {
         // console.log(response.data);
         this.setState({
           todos: response.data,
-          category: response.data[0].categoryName
+          category: response.data[0].categoryName,
         });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
 
   CatList() {
-    return this.state.todos.map(function(currentTodo, i) {
+    return this.state.todos.map(function (currentTodo, i) {
       //  console.log(currentTodo.categoryName)
       return <ShowCat todo={currentTodo} key={i} />;
     });
@@ -50,19 +50,19 @@ export default class AddCourse extends Component {
 
   onChangeCourseName(e) {
     this.setState({
-      courseName: e.target.value
+      courseName: e.target.value,
     });
   }
 
   onChangeDescription(e) {
     this.setState({
-      courseDescription: e.target.value
+      courseDescription: e.target.value,
     });
   }
 
   onChangeCategory(e) {
     this.setState({
-      category: e.target.value
+      category: e.target.value,
     });
   }
   onSubmit(e) {
@@ -78,13 +78,13 @@ export default class AddCourse extends Component {
       courseName: this.state.courseName,
       courseDescription: this.state.courseDescription,
       instructor: this.props.match.params.id,
-      category: this.state.category
+      category: this.state.category,
       // todo_completed: this.state.todo_completed
     };
     axios
-      .post("http://localhost:5000/course/add", newTodo)
+      .post("http://localhost:5001/course/add", newTodo)
 
-      .then(result => {
+      .then((result) => {
         this.props.history.push("/add-lecture/" + this.props.match.params.id);
       });
   }
@@ -129,7 +129,7 @@ export default class AddCourse extends Component {
                       width: "100%",
                       padding: "10px",
                       border: "1px solid lightgray",
-                      borderRadius: "5px"
+                      borderRadius: "5px",
                     }}
                     name="category"
                     id="ada"

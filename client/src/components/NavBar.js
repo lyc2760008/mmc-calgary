@@ -15,14 +15,14 @@ class NavBar extends Component {
 
   state = {
     displayProp: "none",
-    flexProp: "row"
+    flexProp: "row",
   };
   classToggle = () => {
     console.log("hello");
     const { displayProp, flexProp } = this.state;
     this.setState({
       displayProp: displayProp === "none" ? "flex" : "none",
-      flexProp: flexProp === "row" ? "column" : "row"
+      flexProp: flexProp === "row" ? "column" : "row",
     });
   };
 
@@ -94,7 +94,8 @@ class NavBar extends Component {
                                 </a>
                               </li>
                               <li className="inactive">
-                                <a href
+                                <a
+                                  href
                                   onClick={this.onLogoutClick.bind(this)}
                                   className="nav-link"
                                 >
@@ -104,7 +105,7 @@ class NavBar extends Component {
                                     width="10px"
                                     alt={users.first_name}
                                     style={{
-                                      marginRight: "5px"
+                                      marginRight: "5px",
                                     }}
                                     className="sticky-logo img-fluid"
                                     //  title="You must have a Gravatar connected to your emial to display the image"
@@ -146,7 +147,8 @@ class NavBar extends Component {
             </ul>
           </li>
           <li className="inactive">
-            <a href="#"
+            <a
+              href="#"
               onClick={this.onLogoutClick.bind(this)}
               className="nav-link"
             >
@@ -263,9 +265,7 @@ class NavBar extends Component {
 
                           <ul id="main-nav-ul">
                             <li>
-                              <a href={`${process.env.PUBLIC_URL}/`}>
-                                HOME
-                              </a>
+                              <a href={`${process.env.PUBLIC_URL}/`}>HOME</a>
                             </li>
                             <li>
                               <a href={`${process.env.PUBLIC_URL}/about-us`}>
@@ -286,19 +286,17 @@ class NavBar extends Component {
                         <nav
                           className="Navbar__Items"
                           style={{
-                            display: displayProp
+                            display: displayProp,
                           }}
                         >
                           <ul
                             style={{
                               display: displayProp,
-                              flexDirection: flexProp
+                              flexDirection: flexProp,
                             }}
                           >
                             <li className="has-children has-children--multilevel-submenu">
-                              <a href={`${process.env.PUBLIC_URL}/`}>
-                                HOME
-                              </a>
+                              <a href={`${process.env.PUBLIC_URL}/`}>HOME</a>
                               <ul className="submenu">
                                 <li>
                                   <a
@@ -316,7 +314,7 @@ class NavBar extends Component {
                             </li>
                             {/* <li>
                               {" "}
-                              <a herf=" http://localhost:5000/hostname/:id">
+                              <a herf=" http://localhost:5001/hostname/:id">
                                 image
                               </a>
                             </li> */}
@@ -341,14 +339,11 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(NavBar);
+export default connect(mapStateToProps, { logoutUser })(NavBar);

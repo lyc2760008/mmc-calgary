@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import axios from "axios";
 import PropTypes from "prop-types";
 
 class Sidebar extends Component {
@@ -7,26 +7,23 @@ class Sidebar extends Component {
     super(props);
     // initialize the state with an empty todos array
     this.state = {
-    Courses:[]}
-   
-}
+      Courses: [],
+    };
+  }
 
   componentDidMount() {
     //to get data from mongo link
-    let user = JSON.parse(localStorage.getItem('userid'));
-    axios.get('http://localhost:5000/coursebyinstructor?id='+user)
-        .then(response => {
-            this.setState({ Courses: response.data });
-            console.log(user);
-
-        })
-        .catch(function (error){
-            console.log(error);
-        })
-      
-      
-}
- 
+    let user = JSON.parse(localStorage.getItem("userid"));
+    axios
+      .get("http://localhost:5001/coursebyinstructor?id=" + user)
+      .then((response) => {
+        this.setState({ Courses: response.data });
+        console.log(user);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
   render() {
     /* sidebar category */
@@ -39,7 +36,7 @@ class Sidebar extends Component {
         </li>
       );
     });
-   
+
     // let categoryData = [
     //   { categoryLink: "blog-left-sidebar", categoryName: courseList[0] },
     //   { categoryLink: "blog-left-sidebar", categoryName: "Mobile Apps" },
@@ -73,20 +70,20 @@ class Sidebar extends Component {
         postImage: "sidebar-blog-1.jpg",
         postTitle: "Making Sense of React Hooks?",
         postLink: "blog-details-left-sidebar",
-        postDate: "30 October 2019"
+        postDate: "30 October 2019",
       },
       {
         postImage: "sidebar-blog-2.jpg",
         postTitle: "Set Up Medium Feed in React",
         postLink: "blog-details-left-sidebar",
-        postDate: "30 October 2019"
+        postDate: "30 October 2019",
       },
       {
         postImage: "sidebar-blog-3.jpg",
         postTitle: "Five Things I Didn’t Know About Create-React-App",
         postLink: "blog-details-left-sidebar",
-        postDate: "30 October 2019"
-      }
+        postDate: "30 October 2019",
+      },
     ];
 
     let popularPostDataList = popularPostData.map((val, i) => {
@@ -116,7 +113,7 @@ class Sidebar extends Component {
       { tagLink: "blog-left-sidebar", tagName: "Game Development" },
       { tagLink: "blog-left-sidebar", tagName: "Databases" },
       { tagLink: "blog-left-sidebar", tagName: "Software Testing" },
-      { tagLink: "blog-left-sidebar", tagName: "Software Engineering" }
+      { tagLink: "blog-left-sidebar", tagName: "Software Engineering" },
     ];
 
     let tagDataList = tagData.map((val, i) => {

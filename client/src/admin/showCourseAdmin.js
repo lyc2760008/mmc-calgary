@@ -20,29 +20,29 @@ export default class UserList extends Component {
   componentDidMount() {
     //to get data from mongo link
     axios
-      .get("http://localhost:5000/courses/")
-      .then(response => {
+      .get("http://localhost:5001/courses/")
+      .then((response) => {
         this.setState({ todos: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
   delete(id) {
     console.log(id);
     axios
-      .delete("http://localhost:5000/course?id=" + id)
-      .then(result => {
+      .delete("http://localhost:5001/course?id=" + id)
+      .then((result) => {
         // this.forceUpdate()
         // this.props.history.push("/showcourses/")
         toast.success("Deleted successfully");
       })
-      .catch(err => {
+      .catch((err) => {
         // then print response status
         toast.error("Course not deleted");
       });
     setTimeout(
-      function() {
+      function () {
         //Start the timer
         window.location.reload(); //After 1 second, set render to true
       }.bind(this),
@@ -60,10 +60,10 @@ export default class UserList extends Component {
 
   render() {
     const divStyle = {
-      display: "contents"
+      display: "contents",
     };
     // var message='You selected '+this.state.todos._id
-    const Todo = props => (
+    const Todo = (props) => (
       <div style={divStyle}>
         <tr>
           <td>{props.todo.courseName}</td>
@@ -88,7 +88,7 @@ export default class UserList extends Component {
       </div>
     );
     //used in filtering the content coming from database mongo
-    let filteredusers = this.state.todos.filter(course => {
+    let filteredusers = this.state.todos.filter((course) => {
       return (
         course.courseName.indexOf(this.state.search) !== -1 ||
         course.courseDescription.indexOf(this.state.search) !== -1 ||
@@ -105,7 +105,7 @@ export default class UserList extends Component {
             padding: "20px",
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
           <input type="hidden" />
@@ -113,7 +113,7 @@ export default class UserList extends Component {
             style={{
               marginLeft: "-200px",
               textDecoration: "underline",
-              color: "#F0542D"
+              color: "#F0542D",
             }}
           >
             Course List
@@ -133,7 +133,7 @@ export default class UserList extends Component {
             className="table table-striped"
             id="usertable"
             style={{ marginTop: 20 }}
-            ref={el => (this.el = el)}
+            ref={(el) => (this.el = el)}
             data-order='[[ 1, "asc" ]]'
             data-page-length="25"
           >
@@ -150,7 +150,7 @@ export default class UserList extends Component {
             <ToastContainer />
             <tbody>
               {/* displaying data coming  */}
-              {filteredusers.map(function(currentTodo, i) {
+              {filteredusers.map(function (currentTodo, i) {
                 return <Todo todo={currentTodo} key={i} />;
               })}
             </tbody>

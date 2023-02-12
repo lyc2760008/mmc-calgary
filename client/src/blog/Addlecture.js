@@ -5,7 +5,7 @@ import { Progress } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const ShowCourse = props => (
+const ShowCourse = (props) => (
   <option key={props.todo.courseName} value={props.todo.courseName}>
     {props.todo.courseName}
   </option>
@@ -20,7 +20,7 @@ export default class Upload extends Component {
       loaded: 0,
       Courses: [],
       course: "",
-      title: ""
+      title: "",
     };
     this.onChangeCourse = this.onChangeCourse.bind(this);
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -30,20 +30,20 @@ export default class Upload extends Component {
   componentDidMount() {
     axios
       .get(
-        "http://localhost:5000/coursebyinstructor?id=" +
+        "http://localhost:5001/coursebyinstructor?id=" +
           this.props.match.params.id
       )
-      .then(response => {
+      .then((response) => {
         console.log(this.props.match.params.id);
         this.setState({ Courses: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
 
   CourseList() {
-    return this.state.Courses.map(function(currentTodo, i) {
+    return this.state.Courses.map(function (currentTodo, i) {
       //  console.log(currentTodo.categoryName)
       return <ShowCourse todo={currentTodo} key={i} />;
     });
@@ -51,22 +51,22 @@ export default class Upload extends Component {
 
   onChangeCourse(e) {
     this.setState({
-      course: e.target.value
+      course: e.target.value,
     });
   }
 
   onChangeTitle(e) {
     this.setState({
-      title: e.target.value
+      title: e.target.value,
     });
   }
 
   onChangeYouTubeLink(e) {
     this.setState({
-      youtubelink: e.target.value
+      youtubelink: e.target.value,
     });
   }
-  checkMimeType = event => {
+  checkMimeType = (event) => {
     //getting file object
     let files = event.target.files;
     //define message container
@@ -76,7 +76,7 @@ export default class Upload extends Component {
     // loop access array
     for (var x = 0; x < files.length; x++) {
       // compare file type find doesn't matach
-      if (types.every(type => files[x].type !== type)) {
+      if (types.every((type) => files[x].type !== type)) {
         // create error message and assign to container
         err[x] = files[x].type + " is not a supported format\n";
       }
@@ -89,7 +89,7 @@ export default class Upload extends Component {
     }
     return true;
   };
-  maxSelectFile = event => {
+  maxSelectFile = (event) => {
     let files = event.target.files;
     if (files.length > 3) {
       const msg = "Only 3 images can be uploaded at a time";
@@ -99,7 +99,7 @@ export default class Upload extends Component {
     }
     return true;
   };
-  checkFileSize = event => {
+  checkFileSize = (event) => {
     let files = event.target.files;
     let size = 2000000000000000;
     let err = [];
@@ -116,7 +116,7 @@ export default class Upload extends Component {
     }
     return true;
   };
-  onChangeHandler = event => {
+  onChangeHandler = (event) => {
     var files = event.target.files;
     if (
       this.maxSelectFile(event) &&
@@ -126,7 +126,7 @@ export default class Upload extends Component {
       // if return true allow to setState
       this.setState({
         selectedFile: files,
-        loaded: 0
+        loaded: 0,
       });
     }
   };
@@ -147,23 +147,23 @@ export default class Upload extends Component {
 
     console.log(data);
     axios
-      .post("http://localhost:5000/lectures/localupload", data, {
-        onUploadProgress: ProgressEvent => {
+      .post("http://localhost:5001/lectures/localupload", data, {
+        onUploadProgress: (ProgressEvent) => {
           this.setState({
-            loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100
+            loaded: (ProgressEvent.loaded / ProgressEvent.total) * 100,
           });
-        }
+        },
       })
-      .then(res => {
+      .then((res) => {
         // then print response status
         toast.success("upload success");
       })
-      .catch(err => {
+      .catch((err) => {
         // then print response status
         toast.error("upload fail");
       });
     setTimeout(
-      function() {
+      function () {
         window.location.reload();
       }.bind(this),
       1300

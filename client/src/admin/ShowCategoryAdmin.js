@@ -10,7 +10,7 @@ export default class ShowCategory extends Component {
     /** Setting the initial state of the component by assigned an object to this.state **/
     this.state = {
       todos: [],
-      search: ""
+      search: "",
     };
   }
 
@@ -22,11 +22,11 @@ export default class ShowCategory extends Component {
   componentDidMount() {
     //to get data from mongo link
     axios
-      .get("http://localhost:5000/categories/")
-      .then(response => {
+      .get("http://localhost:5001/categories/")
+      .then((response) => {
         this.setState({ todos: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -34,18 +34,18 @@ export default class ShowCategory extends Component {
   delete(id) {
     console.log(id);
     axios
-      .delete("http://localhost:5000/category?id=" + id)
-      .then(result => {
+      .delete("http://localhost:5001/category?id=" + id)
+      .then((result) => {
         // this.forceUpdate()
         // this.props.history.push("/showcategory/")
         toast.success("Deleted successfully");
       })
-      .catch(err => {
+      .catch((err) => {
         // then print response status
         toast.error("Category not deleted");
       });
     setTimeout(
-      function() {
+      function () {
         //Start the timer
         window.location.reload(); //After 1 second, set render to true
       }.bind(this),
@@ -55,10 +55,10 @@ export default class ShowCategory extends Component {
 
   render() {
     const divStyle = {
-      display: "contents"
+      display: "contents",
     };
     // var message='You selected '+this.state.whoIsChecked.allowDestroyAll
-    const Todo = props => (
+    const Todo = (props) => (
       <div style={divStyle}>
         <tr>
           <td>{props.todo.categoryName}</td>
@@ -79,7 +79,7 @@ export default class ShowCategory extends Component {
       </div>
     );
     //used in filtering the content coming from database mongo
-    let filteredusers = this.state.todos.filter(category => {
+    let filteredusers = this.state.todos.filter((category) => {
       return category.categoryName.indexOf(this.state.search) !== -1;
     });
     return (
@@ -90,7 +90,7 @@ export default class ShowCategory extends Component {
             padding: "20px",
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
           <a
@@ -106,7 +106,7 @@ export default class ShowCategory extends Component {
             style={{
               marginLeft: "-200px",
               textDecoration: "underline",
-              color: "#F0542D"
+              color: "#F0542D",
             }}
           >
             Category List
@@ -126,7 +126,7 @@ export default class ShowCategory extends Component {
             className="table table-striped"
             id="usertable"
             style={{ marginTop: 20 }}
-            ref={el => (this.el = el)}
+            ref={(el) => (this.el = el)}
             data-order='[[ 1, "asc" ]]'
             data-page-length="25"
           >
@@ -140,7 +140,7 @@ export default class ShowCategory extends Component {
             <ToastContainer />
             <tbody>
               {/* displaying data coming  */}
-              {filteredusers.map(function(currentTodo, i) {
+              {filteredusers.map(function (currentTodo, i) {
                 return <Todo todo={currentTodo} key={i} />;
               })}
             </tbody>

@@ -3,13 +3,13 @@ import NavBar from "../components/NavBar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const ShowUser = props => (
+const ShowUser = (props) => (
   <option selected="selected" key={props.todo.email} value={props.todo.email}>
     {props.todo.email}
   </option>
 );
 
-const ShowCourse = props => (
+const ShowCourse = (props) => (
   <option key={props.todo.courseName} value={props.todo.courseName}>
     {props.todo.courseName}
   </option>
@@ -21,7 +21,7 @@ export default class CreateEnroll extends Component {
     /** Setting the initial state of the component by assigned an object to this.state **/
     this.state = {
       User: [],
-      Course: []
+      Course: [],
     };
 
     /** Ensure to bind our methods to this by adding them here **/
@@ -33,33 +33,33 @@ export default class CreateEnroll extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/courses/")
-      .then(response => {
+      .get("http://localhost:5001/courses/")
+      .then((response) => {
         this.setState({ Course: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
 
     axios
-      .get("http://localhost:5000/users/")
-      .then(response => {
+      .get("http://localhost:5001/users/")
+      .then((response) => {
         this.setState({ User: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
 
   CourseList() {
-    return this.state.Course.map(function(currentTodo, i) {
+    return this.state.Course.map(function (currentTodo, i) {
       //  console.log(currentTodo.categoryName)
       return <ShowCourse todo={currentTodo} key={i} />;
     });
   }
 
   UserList() {
-    return this.state.User.map(function(currentTodo, i) {
+    return this.state.User.map(function (currentTodo, i) {
       //  console.log(currentTodo.categoryName)
       return <ShowUser todo={currentTodo} key={i} />;
     });
@@ -67,13 +67,13 @@ export default class CreateEnroll extends Component {
 
   onChangeCourse(e) {
     this.setState({
-      course: e.target.value
+      course: e.target.value,
     });
   }
 
   onChangeStudent(e) {
     this.setState({
-      student: e.target.value
+      student: e.target.value,
     });
   }
 
@@ -89,10 +89,10 @@ export default class CreateEnroll extends Component {
     const newTodo = {
       student: this.state.student,
       course: this.state.course,
-      todo_completed: this.state.todo_completed
+      todo_completed: this.state.todo_completed,
     };
 
-    axios.post("http://localhost:5000/enroll/add/", newTodo).then(result => {
+    axios.post("http://localhost:5001/enroll/add/", newTodo).then((result) => {
       this.props.history.push("/EnrollmentList/");
     });
 
@@ -100,7 +100,7 @@ export default class CreateEnroll extends Component {
     this.setState({
       student: "",
       course: "",
-      todo_completed: false
+      todo_completed: false,
     });
   }
 
@@ -135,7 +135,7 @@ export default class CreateEnroll extends Component {
                       width: "100%",
                       padding: "10px",
                       border: "1px solid lightgray",
-                      borderRadius: "5px"
+                      borderRadius: "5px",
                     }}
                     name="student"
                     id="ada"
@@ -158,7 +158,7 @@ export default class CreateEnroll extends Component {
                       width: "100%",
                       padding: "10px",
                       border: "1px solid lightgray",
-                      borderRadius: "5px"
+                      borderRadius: "5px",
                     }}
                     name="course"
                     id="ada2"

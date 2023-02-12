@@ -13,16 +13,16 @@ export default class CatEdit extends Component {
   // To retrieve the todos data from the database --> use the componentDidMount lifecycle method
   componentDidMount() {
     axios
-      .get("http://localhost:5000/category?id=" + this.props.match.params.id)
-      .then(response => {
+      .get("http://localhost:5001/category?id=" + this.props.match.params.id)
+      .then((response) => {
         this.setState({ todos: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
 
-  onChange = e => {
+  onChange = (e) => {
     const state = this.state.todos;
     state[e.target.name] = e.target.value;
     this.setState({ todos: state });
@@ -38,17 +38,17 @@ export default class CatEdit extends Component {
     });
   }
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
 
     const { no, categoryName } = this.state.todos;
     console.log(this.state.todos);
     axios
-      .put("http://localhost:5000/category?id=" + this.props.match.params.id, {
+      .put("http://localhost:5001/category?id=" + this.props.match.params.id, {
         no,
-        categoryName
+        categoryName,
       })
-      .then(result => {
+      .then((result) => {
         this.props.history.push("/ShowCategoryList/");
       });
   };
@@ -91,10 +91,7 @@ export default class CatEdit extends Component {
                 </div>
 
                 <br />
-                <button
-                  type="submit"
-                  className="btn btn-lg btn-info btn-block"
-                >
+                <button type="submit" className="btn btn-lg btn-info btn-block">
                   Update
                 </button>
               </form>
