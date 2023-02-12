@@ -2,6 +2,9 @@
   "name": "e-learning",
   "version": "1.0.0",
   "description": "E learning Website",
+  "engines": {
+    "node": "14.x"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
