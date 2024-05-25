@@ -6,17 +6,16 @@ import Footer from "../components/Footer";
 import MobileMenu from "../components/MobileMenu";
 import axios from "axios";
 
-import Modal from 'react-bootstrap/Modal'
+import Modal from "react-bootstrap/Modal";
 //import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 //import {StripeProvider, Elements} from 'react-stripe-elements';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
-import PaymentForm from './PaymentForm'
-import CheckoutForm from './CheckoutForm'
-import CheckoutForm2 from './CheckoutForm2'
-
+import PaymentForm from "./PaymentForm";
+import CheckoutForm from "./CheckoutForm";
+import CheckoutForm2 from "./CheckoutForm2";
 
 //import VideoList from "./VideoList";
 //import VideoDetail from "./VideoDetail";
@@ -32,21 +31,21 @@ class BlogDetailsLeftSidebar extends Component {
       enrolled: "",
       buttonclass: "",
       payShow: false,
-      addcourse: false
+      addcourse: false,
     };
 
     this.onClick = this.onClick.bind(this);
   }
 
   handleClose = () => {
-    //close About Modal  
-      this.setState({payShow: false})
-  }
+    //close About Modal
+    this.setState({ payShow: false });
+  };
 
   handleShow = () => {
     //show About Modal
-      this.setState({payShow: true})
-  }
+    this.setState({ payShow: true });
+  };
 
   // onRegister(e){
   //   e.preventDefault();
@@ -70,23 +69,23 @@ class BlogDetailsLeftSidebar extends Component {
     const newTodo = {
       student: this.state.user,
       course: this.props.match.params.id,
-      approved: true
+      approved: true,
     };
     if (this.state.buttonclass === "btn btn-success") {
       axios
         .post("/enrollbystudent/add", newTodo)
-        .then(result => {
+        .then((result) => {
           //this.props.history.push("/addtoplaylist/"+this.props.match.params.id)
           toast.success("Added successfully");
         })
-        .catch(err => {
+        .catch((err) => {
           // then print response status
           toast.error("Course not added");
         });
-        this.setState({
-          enrolled: "ALREADY ENROLLED",
-          buttonclass: "btn btn-danger"
-        });
+      this.setState({
+        enrolled: "ALREADY ENROLLED",
+        buttonclass: "btn btn-danger",
+      });
     } else {
       console.log(this.state.buttonclass);
       toast.error("Course already added");
@@ -95,13 +94,13 @@ class BlogDetailsLeftSidebar extends Component {
   async componentDidMount() {
     if (this.state.userRole === "student") {
       this.setState({
-        addcourse: true
+        addcourse: true,
       });
     }
 
     const response = await axios
       .get("/course/" + this.props.match.params.id)
-      .then(result => {
+      .then((result) => {
         console.log(
           "/checkenrollment?id=" +
             this.state.user +
@@ -115,16 +114,16 @@ class BlogDetailsLeftSidebar extends Component {
               "&&courseid=" +
               this.props.match.params.id
           )
-          .then(result => {
+          .then((result) => {
             if (result.data) {
               this.setState({
                 enrolled: "ALREADY ENROLLED",
-                buttonclass: "btn btn-danger"
+                buttonclass: "btn btn-danger",
               });
             } else {
               this.setState({
                 enrolled: "ADD TO COURSE LIST",
-                buttonclass: "btn btn-success"
+                buttonclass: "btn btn-success",
               });
               console.log(result.data);
             }
@@ -140,7 +139,9 @@ class BlogDetailsLeftSidebar extends Component {
   }
 
   render() {
-    const promise = loadStripe("pk_test_51HGSPHEKz6NW9w2TRPkTwVwpAZ3UMek59RpJbQpxB6kcy2yIEmwcPQcXH45gqTbWUh39IwH2HosGBy8d8q2OZesp00jM0L4Ylz")
+    const promise = loadStripe(
+      "pk_test_51HGSPHEKz6NW9w2TRPkTwVwpAZ3UMek59RpJbQpxB6kcy2yIEmwcPQcXH45gqTbWUh39IwH2HosGBy8d8q2OZesp00jM0L4Ylz"
+    );
     return (
       <div>
         {/* Navigation bar */}
@@ -180,13 +181,16 @@ class BlogDetailsLeftSidebar extends Component {
                   <div className="ui container">
                     <div className="ui grid">
                       <div className="ui row">
-                      {this.state.data[0]&&
-                      <div>
-                        <h3>{this.state.data[0].courseName}</h3>  
-                        <h5>{this.state.data[0].courseDescription}</h5>
-                        <h5>This Course is scheduled from:{this.state.data[0].courseSchedule}</h5>
-                      </div>  
-                      }
+                        {this.state.data[0] && (
+                          <div>
+                            <h3>{this.state.data[0].courseName}</h3>
+                            <h5>{this.state.data[0].courseDescription}</h5>
+                            <h5>
+                              This Course is scheduled from:
+                              {this.state.data[0].courseSchedule}
+                            </h5>
+                          </div>
+                        )}
 
                         <div className="five wide column">
                           {/* <VideoList
@@ -232,7 +236,11 @@ class BlogDetailsLeftSidebar extends Component {
                     >
                       Register
                     </button> */}
-                    <Button variant="primary" className="btn btn-success" onClick={this.handleShow}>
+                    <Button
+                      variant="primary"
+                      className="btn btn-success"
+                      onClick={this.handleShow}
+                    >
                       Register
                     </Button>
                     <Modal show={this.state.payShow} onHide={this.handleClose}>
@@ -240,12 +248,10 @@ class BlogDetailsLeftSidebar extends Component {
                         <Modal.Title>COMP4513 - Assignment1</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
-                        <p>Group member: Yichen Li</p>asd
-
+                        <p>Group member: Joe Doe</p>asd
                         <Elements stripe={promise}>
-                          <CheckoutForm amt = {8000}/>
+                          <CheckoutForm amt={8000} />
                         </Elements>
-                        
                       </Modal.Body>
                       <Modal.Footer>
                         <Button variant="secondary" onClick={this.handleClose}>
@@ -266,7 +272,6 @@ class BlogDetailsLeftSidebar extends Component {
         </div>
 
         {/*====================  End of project details page content  ====================*/}
-
 
         {/* Footer */}
         <Footer />
