@@ -14,20 +14,20 @@ class TeamMemberGrid extends Component {
           facebook: "//www.facebook.com",
           twitter: "//www.twitter.com",
           linkedin: "//www.linkedin.com",
-          googlePlus: "//plus.google.com"
-        }
+          googlePlus: "//plus.google.com",
+        },
       },
       {
         profileImage: "team-2-small.jpg",
         profileTitle: "Yichen Li",
-        profileDesignation: "Co-Founder & IT Manager",
+        profileDesignation: "Third-Party Tech Advisor",
         profileEmail: "info@example.com",
         socialLinks: {
           facebook: "//www.facebook.com",
           twitter: "//www.twitter.com",
           linkedin: "//www.linkedin.com",
-          googlePlus: "//plus.google.com"
-        }
+          googlePlus: "//plus.google.com",
+        },
       },
       {
         profileImage: "team-3-small.jpg",
@@ -38,8 +38,8 @@ class TeamMemberGrid extends Component {
           facebook: "//www.facebook.com",
           twitter: "//www.twitter.com",
           linkedin: "//www.linkedin.com",
-          googlePlus: "//plus.google.com"
-        }
+          googlePlus: "//plus.google.com",
+        },
       },
       {
         profileImage: "team-4-small.jpg",
@@ -50,9 +50,9 @@ class TeamMemberGrid extends Component {
           facebook: "//www.facebook.com",
           twitter: "//www.twitter.com",
           linkedin: "//www.linkedin.com",
-          googlePlus: "//plus.google.com"
-        }
-      }
+          googlePlus: "//plus.google.com",
+        },
+      },
     ];
 
     let Datalist = data.map((val, i) => {
@@ -62,7 +62,6 @@ class TeamMemberGrid extends Component {
           key={i}
         >
           <div className="team">
-            
             <div className="content">
               <img
                 src={`assets/img/team/${val.profileImage}`}
@@ -74,7 +73,6 @@ class TeamMemberGrid extends Component {
               <a href={"mailto:" + val.profileEmail} className="email">
                 {val.profileEmail}
               </a>
-              
             </div>
           </div>
         </div>
