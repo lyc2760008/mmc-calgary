@@ -19,7 +19,7 @@ class TeamMemberGrid extends Component {
       },
       {
         profileImage: "team-2-small.jpg",
-        profileTitle: "Yichen Li",
+        profileTitle: "Joe Doe",
         profileDesignation: "Third-Party Tech Advisor",
         profileEmail: "info@example.com",
         socialLinks: {
